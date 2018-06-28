@@ -1,0 +1,108 @@
+LEMASmaster, v1.19
+Authored by: Michael Braine, NIST (michael.braine@nist.gov)
+    PHONE: 301 975 8746
+    EMAIL: michael.braine@nist.gov (preferred)
+June 4, 2018
+
+LEMASmaster contains the package for overseeing all LEMAS devices and building the dmgenv.nist.gov website. Moderate familiarity with bash, Linux filesystems, and networking is required to make functional changes in the current version. LEMASmaster also contains the distribution package of LEMAS, LEMASdist, for LEMAS devices.
+
+Before launching, an apache2 server is assumed to be set up and DNS redirected. /var/www/ should exist for dmgenv.nist.gov to populate, and given user permissions for rwx (chown -R $user /var/www/; chmod -R u=rwx,g=rwx,o=rx /var/www/). Paths need to be corrected too if not run from /home/braine/BraineCode/LEMASmaster. Hey, I'm not a developer, I do this mostly for fun.
+
+To launch the monitoring system, cd to the directory containing EnvWebUpdate.sh and use:
+sh EnvWebUpdate.sh
+
+The script will run for all eternity collecting data from LEMAS devices listed in LabsMonitored.list. IP addresses need to be added and RSA keys built for any unfamiliar devices. In the current version, EnvWebUpdate.sh will need lines added to LabsMonitored.list to build the webpages and download data from unfamiliar devices.
+
+//////////////////////Change Logs\\\\\\\\\\\\\\\\\\\\\\
+EnvWebUpdate.sh
+## Change log from v1.04 to v1.05
+#   November 23, 2017
+#
+#   ver 1.05 - moved location of environment data to under directory containing web pages
+
+update-LEMASdist (replaces updatescript.sh and LEMASUpdateAll.sh)
+## Change log from v1.00 to v1.00
+#   May 30, 2018
+#
+#   ver 1.00 - initial version
+
+sshgrepscript.sh
+## Change log from v1.00 to v1.00
+#   November 1, 2017
+#
+#   ver 1.00 - initial release version
+
+bldghtmlupdate.sh
+## Change log from v1.03 to v1.04
+#   June 3, 2018
+#
+#   ver 1.04 - now importing environment graphs in the form of .html
+#            - added variable for specifying the past n hours (weeks) that data is interactable
+
+downloadhtmlupdate.sh
+## Change log from v1.01 to v1.02
+#   November 23, 2017
+#
+#   ver 1.02 - moved location of environment data to under directory containing web pages
+
+grouphtmlupdate.sh
+## Change log from v1.03 to v1.04
+#   June 3, 2018
+#
+#   ver 1.04 - now importing environment graphs in the form of .html
+#            - added variable for specifying the past n hours (weeks) that data is interactable
+
+labhtmlupdate.sh
+## Change log from v1.03 to v1.04
+#   June 3, 2018
+#
+#   ver 1.04 - now importing environment graphs in the form of .html
+#            - added variable for specifying the past n hours (weeks) that data is interactable
+
+mainhtmlupdate.sh
+## Change log from v1.01 to v1.02
+#   November 4, 2017
+#
+#   ver 1.02 - rewritten to generate pages  in a loop
+#            - made reference from LEMASmaster directory instead of absolute
+
+LEMASDataDownload.sh
+#   November 23, 2017
+#
+#   ver 1.04 - moved location of environment data storage to under directory containing web pages
+
+LEMASIsRunning.sh
+## Change log from v1.04 to v1.05
+#   November 15, 2017
+#
+#   ver 1.05 - added timeout to ssh
+
+sshprocess.sh
+## Change log from v1.00 to v1.00
+#   November 2, 2017
+#
+#   ver 1.00 - initial release
+
+EnableQuiet.sh
+## Change log from v1.00 to v1.01
+#   November 26, 2017
+#
+#   ver 1.01 - added ability to enable quiet on all devices
+
+EnableLoud.sh
+## Change log from v1.00 to v1.01
+#   November 26, 2017
+#
+#   ver 1.00 - added ability to enable loud on all devices
+
+LEMASDataAnalysis.py
+## Change log from v1.07 to v1.08
+#   June 3, 2018
+#
+#   ver 1.08 - migrated recent environment plots into Bokeh for interactive plotting
+#            - general formatting fixes
+
+Deprecated scripts:
+
+LEMASUpdateAll.sh (archived and replaced with update-LEMASdist)
+updatescript.sh (archived and replaced with update-LEMASdist)

@@ -1,0 +1,50 @@
+#!/bin/bash
+#update-LEMASdist
+#   Tested on Ubuntu 14.04
+#
+#///////////////////////////////////////////////////////////////////////////////
+## Notes
+#   May 2018
+#   Authored by: Michael Braine, Physical Science Technician, NIST, Gaithersburg, MD
+#       PHONE: 301 975 8746
+#       EMAIL: michael.braine@nist.gov (use this instead of phone)
+#
+#   Purpose
+#       update LEMAS devices from list of LabsMonitored.list with list of files to scp in updates.list
+#
+#///////////////////////////////////////////////////////////////////////////////
+## References
+#
+##//////////////////////////////////////////////////////////////////////////////
+## Change log from v1.00 to v1.00
+#   May 30, 2018
+#
+#   ver 1.00 - initial version
+#
+#///////////////////////////////////////////////////////////////////////////////
+labslist=/home/braine/BraineCode/LEMASmaster/LabsMonitored.list
+
+echo 'decrypting contacts'
+gpg /home/braine/BraineCode/LEMASmaster/LEMASdist/Contacts.py.gpg
+
+IFS=','
+while read group building lab labname rsacreds hostaddr; do
+  #remove leading and trailing spaces
+  group=$(echo $group | awk '$1=$1')
+  building=$(echo $building | awk '$1=$1')
+  lab=$(echo $lab | awk '$1=$1')
+  labname=$(echo $labname | awk '$1=$1')
+  rsacreds=$(echo $rsacreds | awk '$1=$1')
+  hostaddr=$(echo $hostaddr | awk '$1=$1')
+
+  echo "updating $building/$lab"
+  updates=$(cat /home/braine/BraineCode/LEMASmaster/updates.list)
+
+  timeout 5 ssh -n -i $rsacreds $hostaddr "mkdir /home/pi/bin/"
+  timeout 5 scp -i $rsacreds $updates $hostaddr
+  timeout 5 ssh -n -i $rsacreds $hostaddr "sudo reboot"
+done < $labslist
+unset IFS
+
+echo 'removing contacts'
+rm /home/braine/BraineCode/LEMASmaster/LEMASdist/Contacts.py
