@@ -31,7 +31,7 @@ import numpy as np
 from datetime import datetime, timedelta
 from bokeh.plotting import figure, output_file, save, ColumnDataSource
 from bokeh.models import HoverTool
-# __file__ = '/home/braine/BraineCode/LEMASmaster_v1_19/LEMASmasterscripts/LEMASDataAnalysis.py'
+# __file__ = '/home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts'
 install_location = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.abspath(os.path.join(install_location, '..')))
 from variables import *

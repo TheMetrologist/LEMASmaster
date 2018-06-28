@@ -25,7 +25,7 @@
 labslist=/home/braine/BraineCode/LEMASmaster/LabsMonitored.list
 
 echo 'decrypting contacts'
-gpg /home/braine/BraineCode/LEMASmaster/LEMASdist/Contacts.py.gpg
+gpg /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASdist/Contacts.py.gpg
 
 IFS=','
 while read group building lab labname rsacreds hostaddr; do
@@ -38,7 +38,7 @@ while read group building lab labname rsacreds hostaddr; do
   hostaddr=$(echo $hostaddr | awk '$1=$1')
 
   echo "updating $building/$lab"
-  updates=$(cat /home/braine/BraineCode/LEMASmaster/updates.list)
+  updates=$(cat /home/braine/BraineCode/LEMAS/LEMASmaster/updates.list)
 
   timeout 5 ssh -n -i $rsacreds $hostaddr "mkdir /home/pi/bin/"
   timeout 5 scp -i $rsacreds $updates $hostaddr
@@ -47,4 +47,4 @@ done < $labslist
 unset IFS
 
 echo 'removing contacts'
-rm /home/braine/BraineCode/LEMASmaster/LEMASdist/Contacts.py
+rm /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASdist/Contacts.py

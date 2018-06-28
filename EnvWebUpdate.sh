@@ -23,13 +23,13 @@
 #
 #///////////////////////////////////////////////////////////////////////////////
 
-TIMETOSLEEP=$(cat /home/braine/BraineCode/LEMASmaster/variables.py | grep TIMETOSLEEP*=)
+TIMETOSLEEP=$(cat /home/braine/BraineCode/LEMAS/LEMASmaster/variables.py | grep TIMETOSLEEP*=)
 TIMETOSLEEP=${TIMETOSLEEP#TIMETOSLEEP*=}
 
 #specifiy files and directories
-groupslist=/home/braine/BraineCode/LEMASmaster/GroupsMonitored.list
-buildingslist=/home/braine/BraineCode/LEMASmaster/BuildingsMonitored.list
-labslist=/home/braine/BraineCode/LEMASmaster/LabsMonitored.list
+groupslist=/home/braine/BraineCode/LEMAS/LEMASmaster/GroupsMonitored.list
+buildingslist=/home/braine/BraineCode/LEMAS/LEMASmaster/BuildingsMonitored.list
+labslist=/home/braine/BraineCode/LEMAS/LEMASmaster/LabsMonitored.list
 starttime=$(date)
 WEBBASEDIR="/var/www/dmgenv.nist.gov/"
 ENVDATABASEDIR="/var/www/dmgenv.nist.gov/data"                                  #assign base directory for EnvironmentData
@@ -86,8 +86,8 @@ do
     mkdir $WEBBASEDIR/data/$group/$building/$lab 2>/dev/null
 
     #download data from device
-    sh /home/braine/BraineCode/LEMASmaster/LEMASmasterscripts/LEMASDataDownload.sh $group $building $lab $rsacreds $hostaddr $WEBBASEDIR
-    status=$(sh /home/braine/BraineCode/LEMASmaster/LEMASmasterscripts/LEMASIsRunning.sh $rsacreds $hostaddr) #get status of device
+    sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/LEMASDataDownload.sh $group $building $lab $rsacreds $hostaddr $WEBBASEDIR
+    status=$(sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/LEMASIsRunning.sh $rsacreds $hostaddr) #get status of device
     if [ $nloops -eq '1' ]
     then                                                                        #if first loop
       nloops=$(( $nloops + 1 ))                                                 #increase loop number to prevent from running this section again
@@ -112,7 +112,7 @@ do
   #process environment data that will be pushed to webpages
   echo " "
   echo "$(date): Processing .env.csv data and generating graphs..."
-  /home/braine/anaconda3/bin/python3.6 /home/braine/BraineCode/LEMASmaster/LEMASmasterscripts/LEMASDataAnalysis.py #use python to analyze data, generate graphs and statistics for webpages
+  /home/braine/anaconda3/bin/python3.6 /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/LEMASDataAnalysis.py #use python to analyze data, generate graphs and statistics for webpages
 
   #////////////////////////////////Page Footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #set up footer that will be on every page
@@ -210,7 +210,7 @@ do
   #//////////////////////Main page, all laboratory summary\\\\\\\\\\\\\\\\\\\\\\\\
   #update .html for main page
   #script input is 1(header file 2(footer file) 3(save file) 4(outages graph file) 5(building statuses directory)
-  sh /home/braine/BraineCode/LEMASmaster/LEMASmasterscripts/mainhtmlupdate.sh $HEADERFILE $FOOTERFILE $WEBBASEDIR/data/index.html /main-outages.png $WEBBASEDIR/status
+  sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/mainhtmlupdate.sh $HEADERFILE $FOOTERFILE $WEBBASEDIR/data/index.html /main-outages.png $WEBBASEDIR/status
 
   #///////////////////////////////Group webpages\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #update .html for group pages
@@ -224,7 +224,7 @@ do
     groupname=$(echo $groupname | awk '$1=$1')
 
     #script input is 1(group number) 2(group name) 3(web base directory) 4(header file) 5(footer file)
-    sh /home/braine/BraineCode/LEMASmaster/LEMASmasterscripts/grouphtmlupdate.sh $group $groupname $WEBBASEDIR $HEADERFILE $FOOTERFILE
+    sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/grouphtmlupdate.sh $group $groupname $WEBBASEDIR $HEADERFILE $FOOTERFILE
   done < $groupslist
   unset IFS
 
@@ -240,7 +240,7 @@ do
     buildingname=$(echo $buildingname | awk '$1=$1')
 
     #script input is 1(group number) 2(building number) 3(building name) 4(web base directory) 5(header file) 6(footer file)
-    sh /home/braine/BraineCode/LEMASmaster/LEMASmasterscripts/bldghtmlupdate.sh $group $building $buildingname $WEBBASEDIR $HEADERFILE $FOOTERFILE
+    sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/bldghtmlupdate.sh $group $building $buildingname $WEBBASEDIR $HEADERFILE $FOOTERFILE
   done < $buildingslist
   unset IFS
 
@@ -259,9 +259,9 @@ do
     hostaddr=$(echo $hostaddr | awk '$1=$1')
 
     #script input is 1(group number) 2(building number) 3(lab) 4(lab name) 5(web base directory) 6(header file) 7(footer file)
-    sh /home/braine/BraineCode/LEMASmaster/LEMASmasterscripts/labhtmlupdate.sh $group $building $lab $labname $WEBBASEDIR $HEADERFILE $FOOTERFILE
+    sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/labhtmlupdate.sh $group $building $lab $labname $WEBBASEDIR $HEADERFILE $FOOTERFILE
     #script input is 1(group number) 2(building number) 3(lab) 4(web base directory) 5(environment data base directory) 6(header file) 7(footer file)
-    sh /home/braine/BraineCode/LEMASmaster/LEMASmasterscripts/downloadhtmlupdate.sh $group $building $lab $WEBBASEDIR $HEADERFILE $FOOTERFILE
+    sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/downloadhtmlupdate.sh $group $building $lab $WEBBASEDIR $HEADERFILE $FOOTERFILE
   done < $labslist
   unset IFS
 
