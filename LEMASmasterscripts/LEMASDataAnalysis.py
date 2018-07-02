@@ -24,7 +24,6 @@
 #
 #///////////////////////////////////////////////////////////////////////////////
 
-from variables import *
 from datetime import datetime, timedelta
 import os, glob, time, csv, sys, matplotlib
 matplotlib.use('Agg')                                                           #switch backends to disable graph showing when saving
@@ -35,6 +34,7 @@ from bokeh.models import HoverTool
 # __file__ = '/home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts'
 install_location = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.abspath(os.path.join(install_location, '..')))
+from variables import *
 
 months = ['January',
           'February',
