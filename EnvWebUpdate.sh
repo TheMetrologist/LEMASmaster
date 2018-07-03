@@ -23,18 +23,18 @@
 #
 #///////////////////////////////////////////////////////////////////////////////
 
-TIMETOSLEEP=$(cat /home/braine/BraineCode/LEMAS/LEMASmaster/variables.py | grep TIMETOSLEEP*=)
-TIMETOSLEEP=${TIMETOSLEEP#TIMETOSLEEP*=}
+LEMASmasterdir=/home/$USER/BraineCode/LEMAS/LEMASmaster
+WEBBASEDIR="/var/www/dmgenv.nist.gov/"
 
 #specifiy files and directories
-groupslist=/home/braine/BraineCode/LEMAS/LEMASmaster/GroupsMonitored.list
-buildingslist=/home/braine/BraineCode/LEMAS/LEMASmaster/BuildingsMonitored.list
-labslist=/home/braine/BraineCode/LEMAS/LEMASmaster/LabsMonitored.list
-starttime=$(date)
-WEBBASEDIR="/var/www/dmgenv.nist.gov/"
-ENVDATABASEDIR="/var/www/dmgenv.nist.gov/data"                                  #assign base directory for EnvironmentData
+TIMETOSLEEP=$(cat $LEMASmasterdir/variables.py | grep TIMETOSLEEP*=)
+TIMETOSLEEP=${TIMETOSLEEP#TIMETOSLEEP*=}
+groupslist=$LEMASmasterdir/GroupsMonitored.list
+buildingslist=$LEMASmasterdir/BuildingsMonitored.list
+labslist=$LEMASmasterdir/LabsMonitored.list
 HEADERFILE=$WEBBASEDIR/pageheader.html
 FOOTERFILE=$WEBBASEDIR/pagefooter.html
+starttime=$(date)
 
 #/////////////////////Create dmgenv.nist.gov directories\\\\\\\\\\\\\\\\\\\\\\\\\\\
 #base directories
@@ -46,7 +46,7 @@ mkdir $WEBBASEDIR/labsettings 2>/dev/null
 #///////////////////////////////Page Header\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 pageheader="<center>
   <img src='/nisttag.jpg' width='305' height='100'>
-  <h1>Laboratory Environment Monitoring and Alert System, v1.19</h1>
+  <h1>Laboratory Environment Monitoring and Alert System, v1.20</h1>
 </center>"
 
 echo $pageheader > $HEADERFILE
@@ -57,7 +57,7 @@ while [ true ]
 do
   clear
   echo " "
-  echo "LEMAS Website builder, v1.19"
+  echo "LEMAS Website builder, v1.20"
   echo "Michael Braine, September 2017"
   echo "michael.braine@nist.gov"
   echo " "
@@ -86,8 +86,8 @@ do
     mkdir $WEBBASEDIR/data/$group/$building/$lab 2>/dev/null
 
     #download data from device
-    sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/LEMASDataDownload.sh $group $building $lab $rsacreds $hostaddr $WEBBASEDIR
-    status=$(sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/LEMASIsRunning.sh $rsacreds $hostaddr) #get status of device
+    sh $LEMASmasterdir/LEMASmasterscripts/LEMASDataDownload.sh $group $building $lab $rsacreds $hostaddr $WEBBASEDIR
+    status=$(sh $LEMASmasterdir/LEMASmasterscripts/LEMASIsRunning.sh $rsacreds $hostaddr) #get status of device
     if [ $nloops -eq '1' ]
     then                                                                        #if first loop
       nloops=$(( $nloops + 1 ))                                                 #increase loop number to prevent from running this section again
@@ -106,13 +106,13 @@ do
   done < $labslist #end while loop, loop through monitored lab list
   unset IFS
 
-  chown -R braine:braine /var/www/dmgenv.nist.gov
-  chmod -R 755 /var/www/dmgenv.nist.gov
+  chown -R $USER:$USER $WEBBASEDIR
+  chmod -R 755 $WEBBASEDIR
   #//////////////////////////////Python scripts\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #process environment data that will be pushed to webpages
   echo " "
   echo "$(date): Processing .env.csv data and generating graphs..."
-  /home/braine/anaconda3/bin/python3.6 /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/LEMASDataAnalysis.py #use python to analyze data, generate graphs and statistics for webpages
+  /home/$USER/anaconda3/bin/python3.6 $LEMASmasterdir/LEMASmasterscripts/LEMASDataAnalysis.py #use python to analyze data, generate graphs and statistics for webpages
 
   #////////////////////////////////Page Footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #set up footer that will be on every page
@@ -196,8 +196,7 @@ do
     <li>If you use <i>dmgenv.nist.gov</i>, and subsequently the LEMAS devices, then you agree to the terms:</li>
     <ol>
       <li>Do not reproduce the LEMAS system or site in any capacity without receiving consent from 683.01. Downloading and publishing data is okay as long as it is annotated as originating from this system. Give credit where appropriate</li>
-      <li>You allow your activity on this site to be logged and aggregated in a periodic report</li>
-      <li>You allow other users to play with the data</li>
+      <li>You allow other users to use or play with the data</li>
       <li>The data must not be used for calibrations. It is provided purely for monitoring, informational, and decision-making purposes</li>
       <li>E-mail any suggestions, oddities, and abnormal behavior to the site maintainer
       <li>This system is known to the State of Maryland (rather, the office of 220/B114 <i>in</i> the state of MD) to cause personal increased awareness of indoor laboratory environmental conditions. Side effects include, but are not limited to: anxiety, depression, feelings of dread or anger, and increased heart rate. If you experience any of these symptoms lasting more than 1 hour, stop using the system and consult your group leader immediately.</li>
@@ -211,7 +210,7 @@ do
   #//////////////////////Main page, all laboratory summary\\\\\\\\\\\\\\\\\\\\\\\\
   #update .html for main page
   #script input is 1(header file 2(footer file) 3(save file) 4(outages graph file) 5(building statuses directory)
-  sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/mainhtmlupdate.sh $HEADERFILE $FOOTERFILE $WEBBASEDIR/data/index.html /main-outages.png $WEBBASEDIR/status
+  sh $LEMASmasterdir/LEMASmasterscripts/mainhtmlupdate.sh $HEADERFILE $FOOTERFILE $WEBBASEDIR/data/index.html /main-outages.png $WEBBASEDIR/status
 
   #///////////////////////////////Group webpages\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #update .html for group pages
@@ -225,7 +224,7 @@ do
     groupname=$(echo $groupname | awk '$1=$1')
 
     #script input is 1(group number) 2(group name) 3(web base directory) 4(header file) 5(footer file)
-    sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/grouphtmlupdate.sh $group $groupname $WEBBASEDIR $HEADERFILE $FOOTERFILE
+    sh $LEMASmasterdir/LEMASmasterscripts/grouphtmlupdate.sh $group $groupname $WEBBASEDIR $HEADERFILE $FOOTERFILE
   done < $groupslist
   unset IFS
 
@@ -241,7 +240,7 @@ do
     buildingname=$(echo $buildingname | awk '$1=$1')
 
     #script input is 1(group number) 2(building number) 3(building name) 4(web base directory) 5(header file) 6(footer file)
-    sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/bldghtmlupdate.sh $group $building $buildingname $WEBBASEDIR $HEADERFILE $FOOTERFILE
+    sh $LEMASmasterdir/LEMASmasterscripts/bldghtmlupdate.sh $group $building $buildingname $WEBBASEDIR $HEADERFILE $FOOTERFILE
   done < $buildingslist
   unset IFS
 
@@ -260,9 +259,9 @@ do
     hostaddr=$(echo $hostaddr | awk '$1=$1')
 
     #script input is 1(group number) 2(building number) 3(lab) 4(lab name) 5(web base directory) 6(header file) 7(footer file)
-    sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/labhtmlupdate.sh $group $building $lab $labname $WEBBASEDIR $HEADERFILE $FOOTERFILE
+    sh $LEMASmasterdir/LEMASmasterscripts/labhtmlupdate.sh $group $building $lab $labname $WEBBASEDIR $HEADERFILE $FOOTERFILE
     #script input is 1(group number) 2(building number) 3(lab) 4(web base directory) 5(environment data base directory) 6(header file) 7(footer file)
-    sh /home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts/downloadhtmlupdate.sh $group $building $lab $WEBBASEDIR $HEADERFILE $FOOTERFILE
+    sh $LEMASmasterdir/LEMASmasterscripts/downloadhtmlupdate.sh $group $building $lab $WEBBASEDIR $HEADERFILE $FOOTERFILE
   done < $labslist
   unset IFS
 

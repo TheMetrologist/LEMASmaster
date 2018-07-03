@@ -17,11 +17,11 @@ Purpose
 References
 
 //////////////////////////////////////////////////////////////////////////////
-Change log from v1.07 to v1.08
-  June 3, 2018
+Change log from v1.08 to v1.089
+  July 3, 2018
 
-  ver 1.08 - migrated recent environment plots into Bokeh for interactive plotting
-           - general formatting fixes
+  ver 1.09  -made more PEP8 compliant
+            -group graphs were not ranging correctly. fixed
 
 ///////////////////////////////////////////////////////////////////////////////
 """
@@ -399,7 +399,7 @@ for igroup, _ in enumerate(listgroups):
                     groupmaxRHtime = bldgmaxRHtime
                     groupmaxRHlab = bldgmaxRHlab
                     groupmaxRHbldg = listbldgs[ibldg]
-                elif isinstance(bldgmaxT, str):
+                elif not isinstance(bldgmaxT, str):
                     if bldgmaxT > groupmaxT:                                    #if new maximum lab temperature is greater than previous group temperature
                         groupmaxT = bldgmaxT
                         groupmaxTtime = bldgmaxTtime
