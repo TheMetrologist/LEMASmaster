@@ -16,10 +16,10 @@
 ## References
 #
 ##//////////////////////////////////////////////////////////////////////////////
-## Change log from v1.05 to v1.06
-#   February 26, 2018
+## Change log from v1.06 to v1.07
+#   July 3, 2018
 #
-#   ver 1.06 - added change owner to prevent issues when gathering newly created data files
+#   ver 1.07 - cleaned up absolute paths
 #
 #///////////////////////////////////////////////////////////////////////////////
 
