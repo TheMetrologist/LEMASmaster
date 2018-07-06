@@ -259,7 +259,7 @@ do
     hostaddr=$(echo $hostaddr | awk '$1=$1')
 
     #script input is 1(group number) 2(building number) 3(lab) 4(lab name) 5(web base directory) 6(header file) 7(footer file)
-    sh $LEMASmasterdir/LEMASmasterscripts/labhtmlupdate.sh $group $building $lab $labname $WEBBASEDIR $HEADERFILE $FOOTERFILE
+    sh $LEMASmasterdir/LEMASmasterscripts/labhtmlupdate.sh $group $building $lab $labname $WEBBASEDIR $HEADERFILE $FOOTERFILE $LEMASmasterdir
     #script input is 1(group number) 2(building number) 3(lab) 4(web base directory) 5(environment data base directory) 6(header file) 7(footer file)
     sh $LEMASmasterdir/LEMASmasterscripts/downloadhtmlupdate.sh $group $building $lab $WEBBASEDIR $HEADERFILE $FOOTERFILE
   done < $labslist
