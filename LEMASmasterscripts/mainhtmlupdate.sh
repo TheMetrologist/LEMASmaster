@@ -38,20 +38,19 @@ pagefooter=$2
 savefilepath=$3
 outagesgraphpath=$4
 statuspath=$5
-
-CWD=$(pwd)
+LEMASmasterdir=$6
 
 #//////////////////////Load variables from variables.py\\\\\\\\\\\\\\\\\\\\\\\\
-nmonths=$(cat $CWD/variables.py | grep nmonths*=)
+nmonths=$(cat $LEMASmasterdir/variables.py | grep nmonths*=)
 nmonths=${nmonths#nmonths*=}
 
-IMGWIDTH=$(cat $CWD/variables.py | grep IMGWIDTH*=)
+IMGWIDTH=$(cat $LEMASmasterdir/variables.py | grep IMGWIDTH*=)
 IMDWIDTH=${IMGWIDTH#IMGWIDTH*=}
 
-IMGHEIGHT=$(cat $CWD/variables.py | grep IMGHEIGHT*=)
+IMGHEIGHT=$(cat $LEMASmasterdir/variables.py | grep IMGHEIGHT*=)
 IMGHEIGHT=${IMGHEIGHT#IMGHEIGHT*=}
 
-graphtime=$(cat $CWD/variables.py | grep graphtime*=)
+graphtime=$(cat $LEMASmasterdir/variables.py | grep graphtime*=)
 graphtime=${graphtime#graphtime*=}
 
 #////////////////////////////Generate main.html\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

@@ -34,9 +34,9 @@
 #get inputs
 keygen=$1
 hostaddr=$2
+LEMASmasterdir=$3
 
-CWD=$(pwd)
-timeout 5 ssh -i $keygen $hostaddr sh < $CWD/LEMASmasterscripts/sshprocess.sh > /tmp/LEMASstatus 2>/dev/null   #ssh to device and run script, do not print error messages
+timeout 5 ssh -i $keygen $hostaddr sh < $LEMASmasterdir/LEMASmasterscripts/sshprocess.sh > /tmp/LEMASstatus 2>/dev/null   #ssh to device and run script, do not print error messages
 if [ $? -eq 0 ]                                                                 #if connected, return status of LEMASRun.py process
 then
   echo $(cat /tmp/LEMASstatus)

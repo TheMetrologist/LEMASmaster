@@ -86,8 +86,8 @@ do
     mkdir $WEBBASEDIR/data/$group/$building/$lab 2>/dev/null
 
     #download data from device
-    sh $LEMASmasterdir/LEMASmasterscripts/LEMASDataDownload.sh $group $building $lab $rsacreds $hostaddr $WEBBASEDIR
-    status=$(sh $LEMASmasterdir/LEMASmasterscripts/LEMASIsRunning.sh $rsacreds $hostaddr) #get status of device
+    sh $LEMASmasterdir/LEMASmasterscripts/LEMASDataDownload.sh $group $building $lab $rsacreds $hostaddr $WEBBASEDIR $LEMASmasterdir
+    status=$(sh $LEMASmasterdir/LEMASmasterscripts/LEMASIsRunning.sh $rsacreds $hostaddr $LEMASmasterdir) #get status of device
     if [ $nloops -eq '1' ]
     then                                                                        #if first loop
       nloops=$(( $nloops + 1 ))                                                 #increase loop number to prevent from running this section again
@@ -210,7 +210,7 @@ do
   #//////////////////////Main page, all laboratory summary\\\\\\\\\\\\\\\\\\\\\\\\
   #update .html for main page
   #script input is 1(header file 2(footer file) 3(save file) 4(outages graph file) 5(building statuses directory)
-  sh $LEMASmasterdir/LEMASmasterscripts/mainhtmlupdate.sh $HEADERFILE $FOOTERFILE $WEBBASEDIR/data/index.html /main-outages.png $WEBBASEDIR/status
+  sh $LEMASmasterdir/LEMASmasterscripts/mainhtmlupdate.sh $HEADERFILE $FOOTERFILE $WEBBASEDIR/data/index.html /main-outages.png $WEBBASEDIR/status $LEMASmasterdir
 
   #///////////////////////////////Group webpages\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #update .html for group pages
@@ -224,7 +224,7 @@ do
     groupname=$(echo $groupname | awk '$1=$1')
 
     #script input is 1(group number) 2(group name) 3(web base directory) 4(header file) 5(footer file)
-    sh $LEMASmasterdir/LEMASmasterscripts/grouphtmlupdate.sh $group $groupname $WEBBASEDIR $HEADERFILE $FOOTERFILE
+    sh $LEMASmasterdir/LEMASmasterscripts/grouphtmlupdate.sh $group $groupname $WEBBASEDIR $HEADERFILE $FOOTERFILE $LEMASmasterdir
   done < $groupslist
   unset IFS
 
@@ -240,7 +240,7 @@ do
     buildingname=$(echo $buildingname | awk '$1=$1')
 
     #script input is 1(group number) 2(building number) 3(building name) 4(web base directory) 5(header file) 6(footer file)
-    sh $LEMASmasterdir/LEMASmasterscripts/bldghtmlupdate.sh $group $building $buildingname $WEBBASEDIR $HEADERFILE $FOOTERFILE
+    sh $LEMASmasterdir/LEMASmasterscripts/bldghtmlupdate.sh $group $building $buildingname $WEBBASEDIR $HEADERFILE $FOOTERFILE $LEMASmasterdir
   done < $buildingslist
   unset IFS
 

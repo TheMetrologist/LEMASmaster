@@ -37,8 +37,8 @@ groupname=$2
 WEBBASEDIR=$3
 pageheader=$4
 pagefooter=$5
+LEMASmasterdir=$6
 
-CWD=$(pwd)
 savefilepath=$WEBBASEDIR/data/'Group'$groupnumber/index.html
 statspath=$WEBBASEDIR/statistics/'Group'$groupnumber.stats
 Tgraphpath=$WEBBASEDIR/data/Group$groupnumber/'Group'$groupnumber''-T.html
@@ -46,19 +46,19 @@ RHgraphpath=$WEBBASEDIR/data/Group$groupnumber/'Group'$groupnumber''-RH.html
 outagesgraphpath=/Group$groupnumber/'Group'$groupnumber''-outages.png
 
 #///////////////////////////Load variables from text\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-nmonths=$(cat $CWD/variables.py | grep nmonths*=)
+nmonths=$(cat $LEMASmasterdir/variables.py | grep nmonths*=)
 nmonths=${nmonths#nmonths*=}
 
-IMGWIDTH=$(cat $CWD/variables.py | grep statIMGWIDTH*=)
+IMGWIDTH=$(cat $LEMASmasterdir/variables.py | grep statIMGWIDTH*=)
 IMDWIDTH=${statIMGWIDTH#statIMGWIDTH*=}
 
-IMGHEIGHT=$(cat $CWD/variables.py | grep statIMGHEIGHT*=)
+IMGHEIGHT=$(cat $LEMASmasterdir/variables.py | grep statIMGHEIGHT*=)
 IMGHEIGHT=${statIMGHEIGHT#statIMGHEIGHT*=}
 
-graphtime=$(cat $CWD/variables.py | grep graphtime*=)
+graphtime=$(cat $LEMASmasterdir/variables.py | grep graphtime*=)
 graphtime=${graphtime#graphtime*=}
 
-inter_time=$(cat $CWD/variables.py | grep inter_time*=)
+inter_time=$(cat $LEMASmasterdir/variables.py | grep inter_time*=)
 inter_time=${inter_time#inter_time*=}
 inter_time=$((inter_time/24/7))
 

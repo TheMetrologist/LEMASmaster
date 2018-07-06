@@ -44,8 +44,8 @@ lab=$3
 rsacreds=$4
 hostaddr=$5
 WEBBASEDIR=$6
+LEMASmasterdir=$7
 
-CWD=$(pwd)
 labsettingspath=$WEBBASEDIR/labsettings/$building'_'$lab.labsettings
 
 # labIDf=$(echo $labID | sed -n -e 's/\//_/p')                                    #replaced / with _ to prevent confusing filenames with directory path
@@ -57,5 +57,5 @@ outagesfilename=$currentdate'-outages.env.csv'                                  
 echo $building'/'$lab
 timeout 5 scp -i $rsacreds $hostaddr:/home/pi/Desktop/EnvironmentData/$allfilename $WEBBASEDIR''data/$group/$building/$lab/$building'_'$lab'_'$allfilename #secure copy latest data from device
 timeout 5 scp -i $rsacreds $hostaddr:/home/pi/Desktop/EnvironmentData/$outagesfilename $WEBBASEDIR''data/$group/$building/$lab/$building'_'$lab'_'$outagesfilename #secure copy latest data from device
-timeout 5 ssh -i $rsacreds $hostaddr sh -s < $CWD/LEMASmasterscripts/sshgrepscript.sh $building'/'$lab > $labsettingspath 2>/dev/null #echo only the lab settings, prevents downloading of contact information
+timeout 5 ssh -i $rsacreds $hostaddr sh -s < $LEMASmasterdir/LEMASmasterscripts/sshgrepscript.sh $building'/'$lab > $labsettingspath 2>/dev/null #echo only the lab settings, prevents downloading of contact information
 #scp -i $rsacreds /var/www/dmgenv.nist.gov/NoContact.list $username@$ipaddr:/home/pi/LEMASdist/NoContact.list #secure copy to the device NoContact settings

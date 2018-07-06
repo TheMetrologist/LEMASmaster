@@ -42,8 +42,8 @@ labname=$4
 WEBBASEDIR=$5
 pageheader=$6
 pagefooter=$7
+LEMASmasterdir=$8
 
-CWD=$(pwd)
 savefilepath=$WEBBASEDIR/data/$group/$building/$lab/index.html
 statspath=$WEBBASEDIR''statistics/$building'_'$lab.stats
 labsettingspath=$WEBBASEDIR/labsettings/$building'_'$lab.labsettings
@@ -54,19 +54,19 @@ Thistpath=/$group/$building/$lab/$building'_'$lab''-Thist.png
 RHhistpath=/$group/$building/$lab/$building'_'$lab''-RHhist.png
 
 #///////////////////////////Load variables from text\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-nmonths=$(cat $CWD/variables.py | grep nmonths*=)
+nmonths=$(cat $LEMASmasterdir/variables.py | grep nmonths*=)
 nmonths=${nmonths#nmonths*=}
 
-IMGWIDTH=$(cat $CWD/variables.py | grep statIMGWIDTH*=)
+IMGWIDTH=$(cat $LEMASmasterdir/variables.py | grep statIMGWIDTH*=)
 IMDWIDTH=${statIMGWIDTH#statIMGWIDTH*=}
 
-IMGHEIGHT=$(cat $CWD/variables.py | grep statIMGHEIGHT*=)
+IMGHEIGHT=$(cat $LEMASmasterdir/variables.py | grep statIMGHEIGHT*=)
 IMGHEIGHT=${statIMGHEIGHT#statIMGHEIGHT*=}
 
-graphtime=$(cat $CWD/variables.py | grep graphtime*=)
+graphtime=$(cat $LEMASmasterdir/variables.py | grep graphtime*=)
 graphtime=${graphtime#graphtime*=}
 
-inter_time=$(cat $CWD/variables.py | grep inter_time*=)
+inter_time=$(cat $LEMASmasterdir/variables.py | grep inter_time*=)
 inter_time=${inter_time#inter_time*=}
 inter_time=$((inter_time/24/7))
 
