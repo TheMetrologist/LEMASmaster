@@ -190,7 +190,7 @@ do
     <li>This website rebuilds itself every $TIMETOSLEEP seconds.</li>
     <li><strong>Page last updated:</strong> $(date)</li>
     <br>
-    <li>This gift of data is brought to you and maintained by Michael Braine (<i><a href='mailto:michael.braine@nist.gov'>michael.braine@nist.gov</a></i>), Dimensional Metrology Group 683.01, PML. October, 2017</li>
+    <li>This gift of data is brought to you and maintained by Michael Braine (<i><a href='mailto:michael.braine@nist.gov'>michael.braine@nist.gov</a></i>), Dimensional Metrology Group 685.10, PML. October, 2017</li>
     <li>The public distribution of LEMAS source, including sensor manuals and installation instructions, is available on github: <a href='https://github.com/usnistgov/LEMASdistPub'>https://github.com/usnistgov/LEMASdistPub</a>.</li>
     <li>The source for the website construction and many-environment analysis system is available on github: <a href='https://github.com/usnistgov/LEMASmaster'>https://github.com/usnistgov/LEMASmaster</a>.</li>
     <li>If you use <i>dmgenv.nist.gov</i>, and subsequently the LEMAS devices, then you agree to the terms:</li>
