@@ -195,7 +195,7 @@ do
     <li>The source for the website construction and many-environment analysis system is available on github: <a href='https://github.com/usnistgov/LEMASmaster'>https://github.com/usnistgov/LEMASmaster</a>.</li>
     <li>If you use <i>dmgenv.nist.gov</i>, and subsequently the LEMAS devices, then you agree to the terms:</li>
     <ol>
-      <li>Do not reproduce the LEMAS system or site in any capacity without receiving consent from 683.01. Downloading and publishing data is okay as long as it is annotated as originating from this system. Give credit where appropriate</li>
+      <li>Do not reproduce the LEMAS system or site in any capacity without receiving consent from 685.10. Downloading and publishing data is okay as long as it is annotated as originating from this system. Give credit where appropriate</li>
       <li>You allow other users to use or play with the data</li>
       <li>The data must not be used for calibrations. It is provided purely for monitoring, informational, and decision-making purposes</li>
       <li>E-mail any suggestions, oddities, and abnormal behavior to the site maintainer
