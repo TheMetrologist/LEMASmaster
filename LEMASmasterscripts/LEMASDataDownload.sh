@@ -54,7 +54,7 @@ labsettingspath=$WEBBASEDIR/labsettings/$building'_'$lab.labsettings
 currentdate="$(date '+%B%Y')"                                                   #get current date in <month><YYYY> format
 allfilename=$currentdate'-all.env.csv'                                          #append tocurrent date the filename and extension
 outagesfilename=$currentdate'-outages.env.csv'                                  #append tocurrent date the filename and extension
-echo $building'/'$lab
+echo "Grabbing data from: $building/$lab"
 timeout 5 scp -i $rsacreds $hostaddr:/home/pi/Desktop/EnvironmentData/$allfilename $WEBBASEDIR''data/$group/$building/$lab/$building'_'$lab'_'$allfilename #secure copy latest data from device
 timeout 5 scp -i $rsacreds $hostaddr:/home/pi/Desktop/EnvironmentData/$outagesfilename $WEBBASEDIR''data/$group/$building/$lab/$building'_'$lab'_'$outagesfilename #secure copy latest data from device
 timeout 5 ssh -i $rsacreds $hostaddr sh -s < $LEMASmasterdir/LEMASmasterscripts/sshgrepscript.sh $building'/'$lab > $labsettingspath 2>/dev/null #echo only the lab settings, prevents downloading of contact information

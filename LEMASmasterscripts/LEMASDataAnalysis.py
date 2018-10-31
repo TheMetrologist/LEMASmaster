@@ -157,6 +157,7 @@ for igroup, _ in enumerate(listgroups):
         Bhumid.title.text_font_size = fontsizetitle_inter
 
         for ilab, _ in enumerate(listlabs):
+            print('Processing: '+listbldgs[ibldg]+'/'+listlabs[ilab])
             icolor += 1
             if icolor >= len(linecolor):
                 icolor = 0
@@ -198,7 +199,7 @@ for igroup, _ in enumerate(listgroups):
             if os.path.isfile(WEBBASEDIR+'/'+listgroups[igroup]+'/'+listbldgs[ibldg]+'/'+listlabs[ilab]+'/'+datafilename_past): #if older file exists, get data from both files
                 #must get older data first, then append to it the newer data
                 with open(WEBBASEDIR+'/'+listgroups[igroup]+'/'+listbldgs[ibldg]+'/'+listlabs[ilab]+'/'+datafilename_past) as openedfile:
-                    reader = csv.reader(openedfile, delimiter=',')              #read data from older file
+                    reader = csv.reader(openedfile, delimiter=',')          #read data from newer file
                     filedata = list(zip(*reader))
 
                 axestime_header = filedata[0]
@@ -220,7 +221,7 @@ for igroup, _ in enumerate(listgroups):
                     labhumidity = np.append(labhumidity, humidity_header[1::]).astype(float)
             elif os.path.isfile(WEBBASEDIR+'/'+listgroups[igroup]+'/'+listbldgs[ibldg]+'/'+listlabs[ilab]+'/'+datafilename):
                 with open(WEBBASEDIR+listgroups[igroup]+'/'+listbldgs[ibldg]+'/'+listlabs[ilab]+'/'+datafilename) as openedfile:
-                    reader = csv.reader(openedfile, delimiter=',')              #read data from newer file
+                    reader = csv.reader(openedfile, delimiter=',')          #read data from newer file
                     filedata = list(zip(*reader))
                 axestime_header = filedata[0]
                 labaxestime = np.append(labaxestime, axestime_header[1::])
@@ -265,7 +266,7 @@ for igroup, _ in enumerate(listgroups):
                 #get outage data from nmonths
                 if os.path.isfile(WEBBASEDIR+'/'+listgroups[igroup]+'/'+listbldgs[ibldg]+'/'+listlabs[ilab]+'/'+labID+'_'+filemonthYYYY+'-outages.env.csv'): #check if file exists
                     with open(WEBBASEDIR+listgroups[igroup]+'/'+listbldgs[ibldg]+'/'+listlabs[ilab]+'/'+labID+'_'+filemonthYYYY+'-outages.env.csv') as openedfile:
-                        reader = csv.reader(openedfile, delimiter=',')
+                        reader = csv.reader(openedfile, delimiter=',')          #read data from newer file
                         filedata = list(zip(*reader))
                     if filedata:                                                #if file is populated
                         c, r = np.shape(filedata)
@@ -310,7 +311,7 @@ for igroup, _ in enumerate(listgroups):
                 #get environment data from the nmonths for statistics
                 if os.path.isfile(WEBBASEDIR+'/'+listgroups[igroup]+'/'+listbldgs[ibldg]+'/'+listlabs[ilab]+'/'+labID+'_'+filemonthYYYY+'-all.env.csv'):
                     with open(WEBBASEDIR+'/'+listgroups[igroup]+'/'+listbldgs[ibldg]+'/'+listlabs[ilab]+'/'+labID+'_'+filemonthYYYY+'-all.env.csv') as openedfile:
-                        reader = csv.reader(openedfile, delimiter=',')
+                        reader = csv.reader(openedfile, delimiter=',')          #read data from newer file
                         filedata = list(zip(*reader))
                     axestime_header = filedata[0]
                     labaxestime_stats = np.append(labaxestime_stats, axestime_header[1::]) #gather lab time data, remove header
