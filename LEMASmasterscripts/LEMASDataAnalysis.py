@@ -71,7 +71,8 @@ linecolor = ["#1f77b4",
              'grey',
              'olive',
              'orange',
-             'purple']
+             'purple',
+             'black']
 
 icolor = -1
 WEBBASEDIR = '/var/www/dmgenv.nist.gov/data/'
