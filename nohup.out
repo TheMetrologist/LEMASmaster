@@ -1,0 +1,1003 @@
+mkdir: cannot create directory ‘/var/www/dmgenv.nist.gov//data’: File exists
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 13:02:52 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 13:03:35 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 13:07:04 EST 2018: Building footer...
+ 
+Wed Nov  7 13:07:05 EST 2018: Building webpages, Groups...
+Wed Nov  7 13:07:05 EST 2018: Building webpages, Building...
+Wed Nov  7 13:07:05 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 13:07:06 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 13:12:06 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 13:12:48 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 13:15:07 EST 2018: Building footer...
+ 
+Wed Nov  7 13:15:07 EST 2018: Building webpages, Groups...
+Wed Nov  7 13:15:07 EST 2018: Building webpages, Building...
+Wed Nov  7 13:15:08 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 13:15:09 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 13:20:09 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 13:20:50 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 13:23:08 EST 2018: Building footer...
+ 
+Wed Nov  7 13:23:09 EST 2018: Building webpages, Groups...
+Wed Nov  7 13:23:09 EST 2018: Building webpages, Building...
+Wed Nov  7 13:23:09 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 13:23:11 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 13:28:11 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 13:28:52 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 13:31:12 EST 2018: Building footer...
+ 
+Wed Nov  7 13:31:13 EST 2018: Building webpages, Groups...
+Wed Nov  7 13:31:13 EST 2018: Building webpages, Building...
+Wed Nov  7 13:31:13 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 13:31:14 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 13:36:14 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 13:36:56 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 13:39:13 EST 2018: Building footer...
+ 
+Wed Nov  7 13:39:13 EST 2018: Building webpages, Groups...
+Wed Nov  7 13:39:14 EST 2018: Building webpages, Building...
+Wed Nov  7 13:39:14 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 13:39:15 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 13:44:15 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 13:44:57 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 13:47:14 EST 2018: Building footer...
+ 
+Wed Nov  7 13:47:15 EST 2018: Building webpages, Groups...
+Wed Nov  7 13:47:15 EST 2018: Building webpages, Building...
+Wed Nov  7 13:47:15 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 13:47:16 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 13:52:16 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 13:52:58 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 13:55:14 EST 2018: Building footer...
+ 
+Wed Nov  7 13:55:15 EST 2018: Building webpages, Groups...
+Wed Nov  7 13:55:15 EST 2018: Building webpages, Building...
+Wed Nov  7 13:55:15 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 13:55:16 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 14:00:16 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 14:00:58 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 14:03:16 EST 2018: Building footer...
+ 
+Wed Nov  7 14:03:17 EST 2018: Building webpages, Groups...
+Wed Nov  7 14:03:17 EST 2018: Building webpages, Building...
+Wed Nov  7 14:03:17 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 14:03:18 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 14:08:18 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 14:09:00 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 14:11:20 EST 2018: Building footer...
+ 
+Wed Nov  7 14:11:21 EST 2018: Building webpages, Groups...
+Wed Nov  7 14:11:21 EST 2018: Building webpages, Building...
+Wed Nov  7 14:11:21 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 14:11:22 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 14:16:22 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 14:17:04 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 14:19:22 EST 2018: Building footer...
+ 
+Wed Nov  7 14:19:23 EST 2018: Building webpages, Groups...
+Wed Nov  7 14:19:23 EST 2018: Building webpages, Building...
+Wed Nov  7 14:19:23 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 14:19:24 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 14:24:24 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 14:25:06 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 14:27:24 EST 2018: Building footer...
+ 
+Wed Nov  7 14:27:25 EST 2018: Building webpages, Groups...
+Wed Nov  7 14:27:25 EST 2018: Building webpages, Building...
+Wed Nov  7 14:27:25 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 14:27:26 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 14:32:26 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 14:33:08 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 14:35:27 EST 2018: Building footer...
+ 
+Wed Nov  7 14:35:28 EST 2018: Building webpages, Groups...
+Wed Nov  7 14:35:28 EST 2018: Building webpages, Building...
+Wed Nov  7 14:35:28 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 14:35:29 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 14:40:29 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 14:41:11 EST 2018: Processing .env.csv data and generating graphs...
+Processing: 237/106
+Processing: 220/A08
+Processing: 220/B07
+Processing: 220/A12
+Processing: 220/B05
+Processing: 220/C03
+Processing: 220/A16
+Processing: 220/C05
+Processing: 220/B13
+Processing: 220/A58
+Processing: 221/A39
+Processing: 219/F032
+Processing: 219/F035
+Processing: 219/F033
+Processing: 219/F036
+Processing: 219/G023
+Processing: 219/F031
+Processing: 219/G027
+Processing: 219/G021
+Processing: 219/F030
+Processing: 219/G022
+Processing: 219/F034
+Processing: 219/G024
+Processing: 219/A022
+Processing: 219/G026
+Processing: 219/G032
+ 
+Wed Nov  7 14:43:29 EST 2018: Building footer...
+ 
+Wed Nov  7 14:43:30 EST 2018: Building webpages, Groups...
+Wed Nov  7 14:43:30 EST 2018: Building webpages, Building...
+Wed Nov  7 14:43:30 EST 2018: Building webpages, Labs...
+ 
+Wed Nov  7 14:43:31 EST 2018: Website build complete
+[3J[H[2J 
+LEMAS Website builder, v1.20
+Michael Braine, September 2017
+michael.braine@nist.gov
+ 
+Builder started Wed Nov  7 13:02:52 EST 2018
+ 
+Wed Nov  7 14:48:31 EST 2018: Downloading data from devices...
+Grabbing data from: 219/A022
+Grabbing data from: 219/F030
+Grabbing data from: 219/F031
+Grabbing data from: 219/F032
+Grabbing data from: 219/F033
+Grabbing data from: 219/F034
+Grabbing data from: 219/F035
+Grabbing data from: 219/F036
+Grabbing data from: 219/G021
+Grabbing data from: 219/G022
+Grabbing data from: 219/G023
+Grabbing data from: 219/G024
+Grabbing data from: 219/G026
+Grabbing data from: 219/G027
+Grabbing data from: 219/G032
+Grabbing data from: 220/A08
+Grabbing data from: 220/A12
+Grabbing data from: 220/A16
+Grabbing data from: 220/A58
+Grabbing data from: 220/B05
+Grabbing data from: 220/B07
+Grabbing data from: 220/B13
+Grabbing data from: 220/C03
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 220/C05
+ssh: Could not resolve hostname null: Name or service not known
+ssh: Could not resolve hostname null: Name or service not known
+Grabbing data from: 221/A39
+Grabbing data from: 237/106
+ 
+Wed Nov  7 14:49:44 EST 2018: Processing .env.csv data and generating graphs...

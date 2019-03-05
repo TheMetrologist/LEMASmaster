@@ -112,7 +112,7 @@ do
   #process environment data that will be pushed to webpages
   echo " "
   echo "$(date): Processing .env.csv data and generating graphs..."
-  /home/$USER/anaconda3/bin/python3.6 $LEMASmasterdir/LEMASmasterscripts/LEMASDataAnalysis.py #use python to analyze data, generate graphs and statistics for webpages
+  /home/$USER/anaconda3/bin/python3 $LEMASmasterdir/LEMASmasterscripts/LEMASDataAnalysis.py #use python to analyze data, generate graphs and statistics for webpages
 
   #////////////////////////////////Page Footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #set up footer that will be on every page
