@@ -66,7 +66,7 @@ do
   #download latest environment and outage data
   #input is 1(path to RSA keygen) 2(client username) 3(client IP address) 4(path to save downloaded data to) 5(laboratory ID)
   echo " "
-  echo "$(date): Downloading data from devices..."
+  echo "$(date): Downloading data from devices ..."
 
   nloops=1
   IFS=','
@@ -87,7 +87,7 @@ do
 
     #download data from device
     sh $LEMASmasterdir/LEMASmasterscripts/LEMASDataDownload.sh $group $building $lab $rsacreds $hostaddr $WEBBASEDIR $LEMASmasterdir
-    status=$(sh $LEMASmasterdir/LEMASmasterscripts/LEMASIsRunning.sh $rsacreds $hostaddr $LEMASmasterdir) #get status of device
+    status=$(sh $LEMASmasterdir/LEMASmasterscripts/LEMASIsRunning.sh $rsacreds $hostaddr $LEMASmasterdir $group $building $lab $WEBBASEDIR) #get status of device
     if [ $nloops -eq '1' ]
     then                                                                        #if first loop
       nloops=$(( $nloops + 1 ))                                                 #increase loop number to prevent from running this section again
@@ -111,7 +111,7 @@ do
   #//////////////////////////////Python scripts\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #process environment data that will be pushed to webpages
   echo " "
-  echo "$(date): Processing .env.csv data and generating graphs..."
+  echo "$(date): Processing .env.csv data and generating graphs ..."
   /home/$USER/anaconda3/bin/python3 $LEMASmasterdir/LEMASmasterscripts/LEMASDataAnalysis.py #use python to analyze data, generate graphs and statistics for webpages
 
   #////////////////////////////////Page Footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -119,7 +119,7 @@ do
   #footer is essentially directory tree links for all labs, buildings, and groups, and a link to return to home page
   #regenerate on every loop because it contains the time of the last time the page was updated
   echo " "
-  echo "$(date): Building footer..."
+  echo "$(date): Building footer ..."
 
   pagefooter="<body>
     <h3>Available website navigational directory</h3>
@@ -215,7 +215,7 @@ do
   #///////////////////////////////Group webpages\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #update .html for group pages
   echo " "
-  echo "$(date): Building webpages, Groups..."
+  echo "$(date): Building webpages, Groups ..."
   IFS=','
   while read group groupname
   do
@@ -230,7 +230,7 @@ do
 
   #/////////////////////////////Building webpages\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #update .html for building webpages
-  echo "$(date): Building webpages, Building..."
+  echo "$(date): Building webpages, Building ..."
   IFS=','
   while read group building buildingname
   do
@@ -245,7 +245,7 @@ do
   unset IFS
 
   #//////////////////////////Laboratory webpages\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-  echo "$(date): Building webpages, Labs..."
+  echo "$(date): Building webpages, Labs ..."
   nloops=1
   IFS=','
   while read group building lab labname rsacreds hostaddr

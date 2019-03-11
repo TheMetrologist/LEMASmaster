@@ -66,15 +66,36 @@ cat $pageheader >> $savefilepath
 cat >> $savefilepath <<- _EOF_
       <center>
         <h2>Home - System Status</h2>
+        <br>
+        <h4>Connectivity Legend</h4>
         <table>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = script is running, everything is fine and dandy</td>
+            <td><FONT style="BACKGROUND-COLOR: #008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = script is running, connection successful</td>
           </tr>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: yellow">&nbsp;NOT RUNNING&nbsp;</FONT> = connection to device, but script is not running</td>
+            <td><FONT style="BACKGROUND-COLOR: #FFFF00">&nbsp;NOT RUNNING&nbsp;</FONT> = connection to device, but script is not running</td>
           </tr>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OFFLINE&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = no connection to device, but script may be running</td>
+            <td><FONT style="BACKGROUND-COLOR: #FF0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OFFLINE&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = no connection to device, but script may be running</td>
+          </tr>
+        </table>
+        <br>
+        <h4>Environment Status Legend</h4>
+        <table>
+          <tr>
+            <td><FONT style="BACKGROUND-COLOR: #008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = rest easy, environment is within specified ranges</td>
+          </tr>
+          <tr>
+            <td><FONT style="BACKGROUND-COLOR: #FF0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = sorry. temperature event</td>
+          </tr>
+          <tr>
+            <td><FONT style="BACKGROUND-COLOR: #0000FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = ruh roh, shaggy. humidity event</td>
+          </tr>
+          <tr>
+            <td><FONT style="BACKGROUND-COLOR: #858585">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = temperature <i>and</i> humidity event</td>
+          </tr>
+          <tr>
+            <td><FONT style="BACKGROUND-COLOR: #FFFF00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = connectivity or script issue. see connectivity status</td>
           </tr>
         </table>
         <br>
@@ -82,10 +103,12 @@ cat >> $savefilepath <<- _EOF_
           <tr>
             <td>&nbsp;</td>
             <td><center><strong>Laboratory&nbsp;&nbsp;</strong></center></td>
-            <td><center><strong>Status</strong></center></td>
+            <td><center><strong>Connectivity</strong></center></td>
+            <td><center><strong>Environment Status</strong></center></td>
           </tr>
 _EOF_
 IFS=','
+
 for file in $statuspath/*
 do
   building=$(echo $file | rev | cut -d '/' -f1 | rev)

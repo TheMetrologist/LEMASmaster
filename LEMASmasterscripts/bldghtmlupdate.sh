@@ -97,6 +97,7 @@ cat >> $savefilepath <<- _EOF_
       <br>
       <center>
         <h3>Most Recent Environment</h3>
+        <h6>Graphs may take a few seconds to load if there are a lot of labs in this building</h6>
         <h4>Temperature from the past $graphtime hours</h4>
         <h4>Interactive up to the past $inter_time weeks</h4>
 _EOF_

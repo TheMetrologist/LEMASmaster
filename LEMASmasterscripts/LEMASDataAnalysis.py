@@ -56,23 +56,38 @@ months = ['January',
           'November',
           'December']
 
-linecolor = ["#1f77b4",
-             "#ff7f0e",
-             "#2ca02c",
-             "#d62728",
-             "#9467bd",
-             "#8c564b",
-             "#e377c2",
-             "#7f7f7f",
-             "#bcbd22",
-             "#17becf",
-             'aqua',
-             'darkblue',
-             'grey',
-             'olive',
-             'orange',
-             'purple',
-             'black']
+linecolor = [
+    "#1F78B4",
+    "#33A02C",
+    "#E31A1C",
+    "#FF7F00",
+    "#6A3D9A",
+    "#B15928",
+    "#858585",
+    "#000000",
+    "#800000",
+    "#0000A0",
+    "#B2DF8A",
+    "#FB9A99",
+    "#FDBF6F",
+    "#CAB2D6",
+    "#808000",
+    "#A6CEE3",
+    "#C0C0C0",
+    "#00FFFF",
+    "#808080",
+    "#00FF00",
+    "#736AFF",
+    "#FBB117",
+    "#B5A642",
+    "#493D26",
+    "#CC6600",
+    "#E77471",
+    "#9F000F",
+    "#B2C248",
+    "#4E8975",
+    "#848482",
+]
 
 icolor = -1
 WEBBASEDIR = '/var/www/dmgenv.nist.gov/data/'
@@ -451,7 +466,7 @@ for igroup, _ in enumerate(listgroups):
                     'time': timevec,
                     'time_str': labaxestime[inter_index::],
                     'temperature': labtemperature[inter_index::]})
-                Ltemp.line('time', 'temperature', source=Tsource, color='red', line_width=graphLinewidth)
+                Ltemp.line('time', 'temperature', source=Tsource, color='#FF0000', line_width=graphLinewidth)
                 hoverLtemp = Ltemp.select(dict(type=HoverTool))
                 hoverLtemp.tooltips = [('lab', '@lab'), ('time', '@time_str'), ('temperature', '@temperature')]
                 # hover.mode = 'mouse'
@@ -484,7 +499,7 @@ for igroup, _ in enumerate(listgroups):
                     'time': timevec,
                     'time_str': labaxestime[inter_index::],
                     'humidity': labhumidity[inter_index::]})
-                Lhumid.line('time', 'humidity', source=RHsource, color='blue', line_width=graphLinewidth)
+                Lhumid.line('time', 'humidity', source=RHsource, color='#0000FF', line_width=graphLinewidth)
                 hoverLhumid = Lhumid.select(dict(type=HoverTool))
                 hoverLhumid.tooltips = [('lab', '@lab'), ('time', '@time_str'), ('humidity', '@humidity')]
                 # hover.mode = 'mouse'
@@ -531,13 +546,13 @@ for igroup, _ in enumerate(listgroups):
                 ax4 = plt.figure("Lab Outages", figsize=(12.8, 7.2), dpi=dpi_set)
                 plt.cla()
                 ind = np.arange(nmonths)
-                bar1 = plt.bar(ind, nlaboutages[:, 1].astype(int), graphBarwidth, color='red', label='Temperature events') #stack temperature events
-                bar2 = plt.bar(ind, nlaboutages[:, 2].astype(int), graphBarwidth, color='green', label='Humidity events', bottom=nlaboutages[:, 1].astype(int)) #stack humidity events
-                bar3 = plt.bar(ind, nlaboutages[:, 3].astype(int), graphBarwidth, color='blue', label='Temperature and humidity events', bottom=nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)) #stack combined events
+                bar1 = plt.bar(ind, nlaboutages[:, 1].astype(int), graphBarwidth, color='#FF0000', label='Temperature events') #stack temperature events
+                bar2 = plt.bar(ind, nlaboutages[:, 2].astype(int), graphBarwidth, color='#0000FF', label='Humidity events', bottom=nlaboutages[:, 1].astype(int)) #stack humidity events
+                bar3 = plt.bar(ind, nlaboutages[:, 3].astype(int), graphBarwidth, color='#858585', label='Temperature and humidity events', bottom=nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)) #stack combined events
                 plt.grid(axis='y')
                 plt.xticks(ind, nlaboutages[:, 0], fontsize=fontsizeXticks, rotation='vertical')
                 plt.yticks(range(0, max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+1, int(np.ceil((max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+1)/8))), fontsize=fontsizeYticks)
-                plt.ylim(ymin=0)
+                plt.ylim(bottom=0)
                 plt.ylabel('Number of Events', fontsize=fontsizeYticks)
                 plt.legend(bbox_to_anchor=(0.5, 0.99), loc='upper center', ncol=3)
                 plt.title('Laboratory '+listbldgs[ibldg]+'/'+listlabs[ilab]+'\nEnvironment events by month, past '+str(nmonths)+' months\nGenerated '+str(currenttime), fontsize=fontsizetitle)
@@ -593,13 +608,13 @@ for igroup, _ in enumerate(listgroups):
                 ax4 = plt.figure("Lab Outages", figsize=(12.8, 7.2), dpi=dpi_set)
                 plt.cla()
                 ind = np.arange(nmonths)
-                bar1 = plt.bar(ind, nlaboutages[:, 1].astype(int), graphBarwidth, color='red', label='Temperature events') #stack temperature events
-                bar2 = plt.bar(ind, nlaboutages[:, 2].astype(int), graphBarwidth, color='green', label='Humidity events', bottom=nlaboutages[:, 1].astype(int)) #stack humidity events
-                bar3 = plt.bar(ind, nlaboutages[:, 3].astype(int), graphBarwidth, color='blue', label='Temperature and humidity events', bottom=nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)) #stack combined events
+                bar1 = plt.bar(ind, nlaboutages[:, 1].astype(int), graphBarwidth, color='#FF0000', label='Temperature events') #stack temperature events
+                bar2 = plt.bar(ind, nlaboutages[:, 2].astype(int), graphBarwidth, color='#0000FF', label='Humidity events', bottom=nlaboutages[:, 1].astype(int)) #stack humidity events
+                bar3 = plt.bar(ind, nlaboutages[:, 3].astype(int), graphBarwidth, color='#858585', label='Temperature and humidity events', bottom=nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)) #stack combined events
                 plt.grid(axis='y')
                 plt.xticks(ind, nlaboutages[:, 0], fontsize=fontsizeXticks, rotation='vertical')
                 plt.yticks(range(0, max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+1, int(np.ceil((max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+1)/8))), fontsize=fontsizeYticks)
-                plt.ylim(ymin=0)
+                plt.ylim(bottom=0)
                 plt.ylabel('Number of Events', fontsize=fontsizeYticks)
                 plt.legend(bbox_to_anchor=(0.5, 0.99), loc='upper center', ncol=3)
                 plt.title('Laboratory '+listbldgs[ibldg]+'/'+listlabs[ilab]+'\nEnvironment events by month, past '+str(nmonths)+' months\nGenerated '+str(currenttime), fontsize=fontsizetitle)
@@ -736,13 +751,13 @@ for igroup, _ in enumerate(listgroups):
             ax7 = plt.figure("Building Outages", figsize=(12.8, 7.2), dpi=dpi_set)
             plt.cla()
             ind = np.arange(len(nbldgoutages))
-            bar1 = plt.bar(ind, nbldgoutages[:, 1].astype(int), graphBarwidth, color='red', label='Temperature events') #stack temperature events
-            bar2 = plt.bar(ind, nbldgoutages[:, 2].astype(int), graphBarwidth, color='green', label='Humidity events', bottom=nbldgoutages[:, 1].astype(int)) #stack humidity events
-            bar3 = plt.bar(ind, nbldgoutages[:, 3].astype(int), graphBarwidth, color='blue', label='Temperature and humidity events', bottom=nbldgoutages[:, 1].astype(int)+nbldgoutages[:, 2].astype(int)) #stack combined events
+            bar1 = plt.bar(ind, nbldgoutages[:, 1].astype(int), graphBarwidth, color='#FF0000', label='Temperature events') #stack temperature events
+            bar2 = plt.bar(ind, nbldgoutages[:, 2].astype(int), graphBarwidth, color='#0000FF', label='Humidity events', bottom=nbldgoutages[:, 1].astype(int)) #stack humidity events
+            bar3 = plt.bar(ind, nbldgoutages[:, 3].astype(int), graphBarwidth, color='#858585', label='Temperature and humidity events', bottom=nbldgoutages[:, 1].astype(int)+nbldgoutages[:, 2].astype(int)) #stack combined events
             plt.grid(axis='y')
             plt.xticks(ind, nbldgoutages[:, 0], fontsize=fontsizeXticks, rotation='vertical')
             plt.yticks(range(0, max(nbldgoutages[:, 1].astype(int)+nbldgoutages[:, 2].astype(int)+nbldgoutages[:, 3].astype(int))+5, int(np.ceil((max(nbldgoutages[:, 1].astype(int)+nbldgoutages[:, 2].astype(int)+nbldgoutages[:, 3].astype(int))+5)/8))), fontsize=fontsizeYticks)
-            plt.ylim(ymin=0)
+            plt.ylim(bottom=0)
             plt.ylabel('Number of Events', fontsize=fontsizeYticks)
             plt.legend(bbox_to_anchor=(0.5, 0.99), loc='upper center', ncol=3)
             plt.title('Building '+listbldgs[ibldg]+'\nEnvironment events by laboratory, past '+str(nmonths)+' months\nGenerated '+str(currenttime), fontsize=fontsizetitle)
@@ -839,13 +854,13 @@ for igroup, _ in enumerate(listgroups):
         ax10 = plt.figure("Group Outages", figsize=(12.8, 7.2), dpi=dpi_set)
         plt.cla()
         ind = np.arange(len(ngroupoutages))
-        bar1 = plt.bar(ind, ngroupoutages[:, 1].astype(int), graphBarwidth, color='red', label='Temperature events') #stack temperature events
-        bar2 = plt.bar(ind, ngroupoutages[:, 2].astype(int), graphBarwidth, color='green', label='Humidity events', bottom=ngroupoutages[:, 1].astype(int)) #stack humidity events
-        bar3 = plt.bar(ind, ngroupoutages[:, 3].astype(int), graphBarwidth, color='blue', label='Temperature and humidity events', bottom=ngroupoutages[:, 1].astype(int)+ngroupoutages[:, 2].astype(int)) #stack combined events
+        bar1 = plt.bar(ind, ngroupoutages[:, 1].astype(int), graphBarwidth, color='#FF0000', label='Temperature events') #stack temperature events
+        bar2 = plt.bar(ind, ngroupoutages[:, 2].astype(int), graphBarwidth, color='#0000FF', label='Humidity events', bottom=ngroupoutages[:, 1].astype(int)) #stack humidity events
+        bar3 = plt.bar(ind, ngroupoutages[:, 3].astype(int), graphBarwidth, color='#858585', label='Temperature and humidity events', bottom=ngroupoutages[:, 1].astype(int)+ngroupoutages[:, 2].astype(int)) #stack combined events
         plt.grid(axis='y')
         plt.xticks(ind, ngroupoutages[:, 0], fontsize=fontsizeXticks, rotation='vertical')
         plt.yticks(range(0, max(ngroupoutages[:, 1].astype(int)+ngroupoutages[:, 2].astype(int)+ngroupoutages[:, 3].astype(int))+10, int(np.ceil((max(ngroupoutages[:, 1].astype(int)+ngroupoutages[:, 2].astype(int)+ngroupoutages[:, 3].astype(int))+10)/8))), fontsize=fontsizeYticks)
-        plt.ylim(ymin=0)
+        plt.ylim(bottom=0)
         plt.ylabel('Number of Events', fontsize=fontsizeYticks)
         plt.legend(bbox_to_anchor=(0.5, 0.99), loc='upper center', ncol=3)
         plt.title(listgroups[igroup]+'\nEnvironment events by building, past '+str(nmonths)+' months\nGenerated '+str(currenttime), fontsize=fontsizetitle)
@@ -952,13 +967,13 @@ if len(nmainoutages) != 0: #pylint: disable=C1801
     ax11 = plt.figure("Main Outages", figsize=(12.8, 7.2), dpi=dpi_set)
     plt.cla()
     ind = np.arange(len(nmainoutages))
-    bar1 = plt.bar(ind, nmainoutages[:, 1].astype(int), graphBarwidth, color='red', label='Temperature events') #stack temperature events
-    bar2 = plt.bar(ind, nmainoutages[:, 2].astype(int), graphBarwidth, color='green', label='Humidity events', bottom=nmainoutages[:, 1].astype(int)) #stack humidity events
-    bar3 = plt.bar(ind, nmainoutages[:, 3].astype(int), graphBarwidth, color='blue', label='Temperature and humidity events', bottom=nmainoutages[:, 1].astype(int)+nmainoutages[:, 2].astype(int)) #stack combined events
+    bar1 = plt.bar(ind, nmainoutages[:, 1].astype(int), graphBarwidth, color='#FF0000', label='Temperature events') #stack temperature events
+    bar2 = plt.bar(ind, nmainoutages[:, 2].astype(int), graphBarwidth, color='#0000FF', label='Humidity events', bottom=nmainoutages[:, 1].astype(int)) #stack humidity events
+    bar3 = plt.bar(ind, nmainoutages[:, 3].astype(int), graphBarwidth, color='#858585', label='Temperature and humidity events', bottom=nmainoutages[:, 1].astype(int)+nmainoutages[:, 2].astype(int)) #stack combined events
     plt.grid(axis='y')
     plt.xticks(ind, nmainoutages[:, 0], fontsize=fontsizeXticks, rotation='vertical')
     plt.yticks(range(0, max(nmainoutages[:, 1].astype(int))+max(nmainoutages[:, 2].astype(int))+max(nmainoutages[:, 3].astype(int))+10, int(np.ceil((max(nmainoutages[:, 1].astype(int)+nmainoutages[:, 2].astype(int)+nmainoutages[:, 3].astype(int))+10)/8))), fontsize=fontsizeYticks)
-    plt.ylim(ymin=0)
+    plt.ylim(bottom=0)
     plt.ylabel('Number of Events', fontsize=fontsizeYticks)
     plt.legend(bbox_to_anchor=(0.5, 0.99), loc='upper center', ncol=3)
     plt.title('Environment events by group, past '+str(nmonths)+' months\nGenerated '+str(currenttime), fontsize=fontsizetitle)

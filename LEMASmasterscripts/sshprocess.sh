@@ -33,7 +33,7 @@
 
 if [ $(pgrep -af python | grep -c LEMASRun.py) -eq "0" ]
 then
-  echo "<FONT style='BACKGROUND-COLOR: yellow'>&nbsp;NOT RUNNING&nbsp;</FONT>"
+  echo "<FONT style='BACKGROUND-COLOR: #FFFF00'>&nbsp;NOT RUNNING&nbsp;</FONT>"
 else
-  echo "<FONT style='BACKGROUND-COLOR: green'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>"
+  echo "<FONT style='BACKGROUND-COLOR: #008000'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>"
 fi
