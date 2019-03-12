@@ -27,8 +27,10 @@
 #       $1 - 1st input is header file
 #       $2 - 2nd input is footer file
 #       $3 - 3rd input is path to save .html
-#       #4 - 4th input is outages graph file
-#       #5 - 5th input is path to building statuses
+#       $4 - 4th input is outages graph file
+#       $5 - 5th input is path to building statuses
+#       $6 - directory to master scripts
+#       $7 - base directory for website
 #
 #///////////////////////////////////////////////////////////////////////////////
 
@@ -39,6 +41,7 @@ savefilepath=$3
 outagesgraphpath=$4
 statuspath=$5
 LEMASmasterdir=$6
+WEBBASEDIR=$7
 
 #//////////////////////Load variables from variables.py\\\\\\\\\\\\\\\\\\\\\\\\
 nmonths=$(cat $LEMASmasterdir/variables.py | grep nmonths*=)
@@ -83,19 +86,19 @@ cat >> $savefilepath <<- _EOF_
         <h4>Environment Status Legend</h4>
         <table>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: #008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = rest easy, environment is within specified ranges</td>
+            <td><FONT style="BACKGROUND-COLOR: #008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = rest easy, environment is within specified ranges</td>
           </tr>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: #FF0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = sorry. temperature event</td>
+            <td><FONT style="BACKGROUND-COLOR: #FF0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = sorry. temperature event</td>
           </tr>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: #0000FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = ruh roh, shaggy. humidity event</td>
+            <td><FONT style="BACKGROUND-COLOR: #0000FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = ruh roh, shaggy. humidity event</td>
           </tr>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: #858585">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = temperature <i>and</i> humidity event</td>
+            <td><FONT style="BACKGROUND-COLOR: #808080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = temperature <i>and</i> humidity event</td>
           </tr>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: #FFFF00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = connectivity or script issue. see connectivity status</td>
+            <td><FONT style="BACKGROUND-COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = connectivity or script issue. see connectivity status</td>
           </tr>
         </table>
         <br>
@@ -113,12 +116,13 @@ for file in $statuspath/*
 do
   building=$(echo $file | rev | cut -d '/' -f1 | rev)
   echo "<tr><td><strong>$building Labs</strong></td><td></td><td></td></tr><tr>" >> $savefilepath
-  while read labID status
+  while read group labID status
   do
-    labID=$(echo $labID | awk '$1=$1')
-    status=$(echo $status | awk '$1=$1')
+    building=$(echo $labID | cut -d '/' -f1)
+    lab=$(echo $labID | cut -d '/' -f2)
     echo "<td>&nbsp;</td>" >> $savefilepath
-    echo "<td>$labID</td>" >> $savefilepath
+    # <a href='/Group$group/$building/$lab/index.html'> </a>
+    echo "<td><a href='/$group/$building/$lab/index.html'>$building/$lab</a></td>" >> $savefilepath
     echo "<td>$status</td></tr>" >> $savefilepath
   done < $file
 done

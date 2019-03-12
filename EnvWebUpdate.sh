@@ -46,7 +46,7 @@ mkdir $WEBBASEDIR/labsettings 2>/dev/null
 #///////////////////////////////Page Header\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 pageheader="<center>
   <img src='/nisttag.jpg' width='305' height='100'>
-  <h1>Laboratory Environment Monitoring and Alert System, v1.20</h1>
+  <h1>Laboratory Environment Monitoring and Alert System, v1.21</h1>
 </center>"
 
 echo $pageheader > $HEADERFILE
@@ -57,8 +57,8 @@ while [ true ]
 do
   clear
   echo " "
-  echo "LEMAS Website builder, v1.20"
-  echo "Michael Braine, September 2017"
+  echo "LEMAS Website builder, v1.21"
+  echo "Michael Braine, March 2019 (September 2017)"
   echo "michael.braine@nist.gov"
   echo " "
   echo "Builder started $starttime"
@@ -98,7 +98,7 @@ do
     fi
     if [ -f $WEBBASEDIR/status/$building ]
     then                                                                        #if file exists
-      echo $building'/'$lab','$status >> $WEBBASEDIR/status/$building           #append lab status to building status file
+      echo $group','$building'/'$lab','$status >> $WEBBASEDIR/status/$building  #append lab status to building status file
     else                                                                        #if file does not exist
       touch $WEBBASEDIR'/status/'$building                                      #create new building status file
       echo $building'/'$lab','$status > $WEBBASEDIR/status/$building            #write lab status to building status file
@@ -210,7 +210,7 @@ do
   #//////////////////////Main page, all laboratory summary\\\\\\\\\\\\\\\\\\\\\\\\
   #update .html for main page
   #script input is 1(header file 2(footer file) 3(save file) 4(outages graph file) 5(building statuses directory)
-  sh $LEMASmasterdir/LEMASmasterscripts/mainhtmlupdate.sh $HEADERFILE $FOOTERFILE $WEBBASEDIR/data/index.html /main-outages.png $WEBBASEDIR/status $LEMASmasterdir
+  sh $LEMASmasterdir/LEMASmasterscripts/mainhtmlupdate.sh $HEADERFILE $FOOTERFILE $WEBBASEDIR/data/index.html /main-outages.png $WEBBASEDIR/status $LEMASmasterdir $WEBBASEDIR
 
   #///////////////////////////////Group webpages\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #update .html for group pages

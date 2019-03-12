@@ -69,26 +69,26 @@ then
     if (( $(echo "$RHlast>$RHmax" | bc -l) )) || (( $(echo "$RHlast<$RHmin" | bc -l) ))
     #both out
     then
-      string='</td><td><FONT style=\"BACKGROUND-COLOR: #858585\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
+      string='</td><td><FONT style=\"BACKGROUND-COLOR: #808080\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
     elif (( $(echo "$RHlast<$RHmax" | bc -l) )) && (( $(echo "$RHlast>$RHmin" | bc -l) ))
     #only T out
     then
-      string='</td><td><FONT style=\"BACKGROUND-COLOR: #FF0000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
+      string='</td><td><FONT style=\"BACKGROUND-COLOR: #FF0000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
     fi
   elif (( $(echo "$RHlast>$RHmax" | bc -l) )) || (( $(echo "$RHlast<$RHmin" | bc -l) ))
   #only RH out
   then
     if (( $(echo "$Tlast<$Tmax" | bc -l) )) && (( $(echo "$Tlast>$Tmin" | bc -l) ))
     then
-      string='</td><td><FONT style=\"BACKGROUND-COLOR: #0000FF\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
+      string='</td><td><FONT style=\"BACKGROUND-COLOR: #0000FF\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
     fi
   #both in
   else
-    string='</td><td><FONT style=\"BACKGROUND-COLOR: #008000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
+    string='</td><td><FONT style=\"BACKGROUND-COLOR: #008000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
   fi
 
   echo $(cat /tmp/LEMASstatus)$string
   # echo $(cat /tmp/LEMASstatus)
 else                                                                            #otherwise, if could not connect, return OFFLINE status
-  echo "<FONT style=\"BACKGROUND-COLOR: #FF0000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OFFLINE&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><td><FONT style=\"BACKGROUND-COLOR: #FFFF00\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>"
+  echo "<FONT style=\"BACKGROUND-COLOR: #FF0000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OFFLINE&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><td><FONT style=\"BACKGROUND-COLOR: #000000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>"
 fi
