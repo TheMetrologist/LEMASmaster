@@ -48,44 +48,44 @@ WEBBASEDIR=$7
 timeout 5 ssh -i $keygen $hostaddr sh < $LEMASmasterdir/LEMASmasterscripts/sshprocess.sh > /tmp/LEMASstatus 2>/dev/null   #ssh to device and run script, do not print error messages
 if [ $? -eq 0 ]                                                                 #if connected, return status of LEMASRun.py process
 then
-  # month=$(date -d "$D" +'%B')
-  # year=$(date -d "$D" +'%Y')
-  # # get data from *.labsettings file and strip down string
-  # Trangeline=$(grep -nr 'Temperature range' $WEBBASEDIR'labsettings/'$building'_'$lab'.labsettings' | cut -d : -f 1)
-  # Trangeline=$((Trangeline + 1))
-  # RHrangeline=$(grep -nr 'Humidity range' $WEBBASEDIR'labsettings/'$building'_'$lab'.labsettings' | cut -d : -f 1)
-  # RHrangeline=$((RHrangeline + 1))
-  # Trange=$(sed -n $Trangeline','$Trangeline'p' $WEBBASEDIR'labsettings/'$building'_'$lab'.labsettings')
-  # RHrange=$(sed -n $RHrangeline','$RHrangeline'p' $WEBBASEDIR'labsettings/'$building'_'$lab'.labsettings')
-  # lastline=$(sed -e '$!d' $WEBBASEDIR'data/'$group'/'$building'/'$lab'/'$building'_'$lab'_'$month$year'-all.env.csv')
-  # Tlast=$(echo $lastline | cut -d ',' -f2)
-  # RHlast=$(echo $lastline | cut -d ',' -f3)
-  # Tmin=$(echo $Trange | cut -d ',' -f1 | sed 's/\[//g')
-  # Tmax=$(echo $Trange | cut -d ',' -f2 | sed 's/\]//g')
-  # RHmin=$(echo $RHrange | cut -d ',' -f1 | sed 's/\[//g')
-  # RHmax=$(echo $RHrange | cut -d ',' -f2 | sed 's/\]//g')
-  # if ( echo $Tlast'>'$Tmax | bc -l ) || ( echo $Tlast'<'$Tmin | bc -l )
-  #   then
-  #   #both out
-  #   if ( echo $RHlast'>'$RHmax | bc -l ) || ( echo $RHlast'<'$RHmin | bc -l)
-  #   then
-  #     string='</td><td><FONT style=\"BACKGROUND-COLOR: #858585\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
-  #   #only T out
-  #   elif ( echo $RHlast'<'$RHmax | bc -l ) && ( echo $RHlast'>'$RHmin | bc -l )
-  #   then
-  #     string='</td><td><FONT style=\"BACKGROUND-COLOR: #FF0000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
-  #   fi
-  # #only RH out
-  # elif ( $RHlast'>'$RHmax | bc -l ) || ( echo $RHlast'<'$RHmin | bc -l)
-  #   then
-  #   if ( echo $Tlast'<'$Tmax | bc -l) && ( echo $Tlast'>'$Tmin | bc -l)
-  #   then
-  #     string='</td><td><FONT style=\"BACKGROUND-COLOR: #0000FF\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
-  #   fi
-  # #both in
-  # else
-  #   string='</td><td><FONT style=\"BACKGROUND-COLOR: #008000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
-  # fi
+  month=$(date -d "$D" +'%B')
+  year=$(date -d "$D" +'%Y')
+  # get data from *.labsettings file and strip down string
+  Trangeline=$(grep -nr 'Temperature range' $WEBBASEDIR'labsettings/'$building'_'$lab'.labsettings' | cut -d : -f 1)
+  Trangeline=$((Trangeline + 1))
+  RHrangeline=$(grep -nr 'Humidity range' $WEBBASEDIR'labsettings/'$building'_'$lab'.labsettings' | cut -d : -f 1)
+  RHrangeline=$((RHrangeline + 1))
+  Trange=$(sed -n $Trangeline','$Trangeline'p' $WEBBASEDIR'labsettings/'$building'_'$lab'.labsettings')
+  RHrange=$(sed -n $RHrangeline','$RHrangeline'p' $WEBBASEDIR'labsettings/'$building'_'$lab'.labsettings')
+  lastline=$(sed -e '$!d' $WEBBASEDIR'data/'$group'/'$building'/'$lab'/'$building'_'$lab'_'$month$year'-all.env.csv')
+  Tlast=$(echo $lastline | cut -d ',' -f2)
+  RHlast=$(echo $lastline | cut -d ',' -f3)
+  Tmin=$(echo $Trange | cut -d ',' -f1 | sed 's/\[//g')
+  Tmax=$(echo $Trange | cut -d ',' -f2 | sed 's/\]//g')
+  RHmin=$(echo $RHrange | cut -d ',' -f1 | sed 's/\[//g')
+  RHmax=$(echo $RHrange | cut -d ',' -f2 | sed 's/\]//g')
+  if (( $(echo "$Tlast>$Tmax" | bc -l) )) || (( $(echo "$Tlast<$Tmin" | bc -l) ))
+  then
+    if (( $(echo "$RHlast>$RHmax" | bc -l) )) || (( $(echo "$RHlast<$RHmin" | bc -l) ))
+    #both out
+    then
+      string='</td><td><FONT style=\"BACKGROUND-COLOR: #858585\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
+    elif (( $(echo "$RHlast<$RHmax" | bc -l) )) && (( $(echo "$RHlast>$RHmin" | bc -l) ))
+    #only T out
+    then
+      string='</td><td><FONT style=\"BACKGROUND-COLOR: #FF0000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
+    fi
+  elif (( $(echo "$RHlast>$RHmax" | bc -l) )) || (( $(echo "$RHlast<$RHmin" | bc -l) ))
+  #only RH out
+  then
+    if (( $(echo "$Tlast<$Tmax" | bc -l) )) && (( $(echo "$Tlast>$Tmin" | bc -l) ))
+    then
+      string='</td><td><FONT style=\"BACKGROUND-COLOR: #0000FF\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
+    fi
+  #both in
+  else
+    string='</td><td><FONT style=\"BACKGROUND-COLOR: #008000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
+  fi
 
   # echo $(cat /tmp/LEMASstatus)$string
   echo $(cat /tmp/LEMASstatus)
