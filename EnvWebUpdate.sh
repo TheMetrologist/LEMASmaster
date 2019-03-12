@@ -87,7 +87,7 @@ do
 
     #download data from device
     sh $LEMASmasterdir/LEMASmasterscripts/LEMASDataDownload.sh $group $building $lab $rsacreds $hostaddr $WEBBASEDIR $LEMASmasterdir
-    status=$(sh $LEMASmasterdir/LEMASmasterscripts/LEMASIsRunning.sh $rsacreds $hostaddr $LEMASmasterdir $group $building $lab $WEBBASEDIR) #get status of device
+    status=$(bash $LEMASmasterdir/LEMASmasterscripts/LEMASIsRunning.sh $rsacreds $hostaddr $LEMASmasterdir $group $building $lab $WEBBASEDIR) #get status of device
     if [ $nloops -eq '1' ]
     then                                                                        #if first loop
       nloops=$(( $nloops + 1 ))                                                 #increase loop number to prevent from running this section again

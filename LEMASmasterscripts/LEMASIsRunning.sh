@@ -87,8 +87,8 @@ then
     string='</td><td><FONT style=\"BACKGROUND-COLOR: #008000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>'
   fi
 
-  # echo $(cat /tmp/LEMASstatus)$string
-  echo $(cat /tmp/LEMASstatus)
+  echo $(cat /tmp/LEMASstatus)$string
+  # echo $(cat /tmp/LEMASstatus)
 else                                                                            #otherwise, if could not connect, return OFFLINE status
   echo "<FONT style=\"BACKGROUND-COLOR: #FF0000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OFFLINE&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><td><FONT style=\"BACKGROUND-COLOR: #FFFF00\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>"
 fi
