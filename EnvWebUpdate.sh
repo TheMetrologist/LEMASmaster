@@ -46,7 +46,7 @@ mkdir $WEBBASEDIR/labsettings 2>/dev/null
 #///////////////////////////////Page Header\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 pageheader="<center>
   <img src='/nisttag.jpg' width='305' height='100'>
-  <h1>Laboratory Environment Monitoring and Alert System, v1.21</h1>
+  <h1>Laboratory Environment Monitoring and Alert System, v1.22</h1>
 </center>"
 
 echo $pageheader > $HEADERFILE
@@ -57,7 +57,7 @@ while [ true ]
 do
   clear
   echo " "
-  echo "LEMAS Website builder, v1.21"
+  echo "LEMAS Website builder, v1.22"
   echo "Michael Braine, March 2019 (September 2017)"
   echo "michael.braine@nist.gov"
   echo " "

@@ -86,19 +86,19 @@ cat >> $savefilepath <<- _EOF_
         <h4>Environment Status Legend</h4>
         <table>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: #008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = rest easy, environment is within specified ranges</td>
+            <td><FONT style="BACKGROUND-COLOR: #008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = rest easy, environment is within specified ranges</td>
           </tr>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: #FF0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = sorry. temperature event</td>
+            <td><FONT style="BACKGROUND-COLOR: #FF0000">&nbsp;&nbsp;TEMPERATURE&nbsp;&nbsp;</FONT> = sorry, temperature event</td>
           </tr>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: #0000FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = ruh roh, shaggy. humidity event</td>
+            <td><FONT style="BACKGROUND-COLOR: #0000FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FFFFFF">HUMIDITY</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> = ruh roh, shaggy. humidity event</td>
           </tr>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: #808080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = temperature <i>and</i> humidity event</td>
+            <td><FONT style="BACKGROUND-COLOR: #808080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MULTIPLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = temperature <i>and</i> humidity event</td>
           </tr>
           <tr>
-            <td><FONT style="BACKGROUND-COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> = connectivity or script issue. see connectivity status</td>
+            <td><FONT style="BACKGROUND-COLOR: #000000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF">CONN./SCRIPT</font>&nbsp;&nbsp;</FONT> = connectivity or script issue, see connectivity status</td>
           </tr>
         </table>
         <br>
@@ -115,13 +115,17 @@ IFS=','
 for file in $statuspath/*
 do
   building=$(echo $file | rev | cut -d '/' -f1 | rev)
-  echo "<tr><td><strong>$building Labs</strong></td><td></td><td></td></tr><tr>" >> $savefilepath
+  i=0
   while read group labID status
   do
+    if [ $i -eq 0 ]
+    then
+      echo "<tr><td><strong><a href='/$group/$building/index.html'>$building Labs</a></strong></td><td></td><td></td></tr><tr>" >> $savefilepath
+    fi
+    i=$((i+1))
     building=$(echo $labID | cut -d '/' -f1)
     lab=$(echo $labID | cut -d '/' -f2)
     echo "<td>&nbsp;</td>" >> $savefilepath
-    # <a href='/Group$group/$building/$lab/index.html'> </a>
     echo "<td><a href='/$group/$building/$lab/index.html'>$building/$lab</a></td>" >> $savefilepath
     echo "<td>$status</td></tr>" >> $savefilepath
   done < $file
