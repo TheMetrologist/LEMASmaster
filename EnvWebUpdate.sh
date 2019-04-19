@@ -46,7 +46,7 @@ mkdir $WEBBASEDIR/labsettings 2>/dev/null
 #///////////////////////////////Page Header\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 pageheader="<center>
   <img src='/nisttag.jpg' width='305' height='100'>
-  <h1>Laboratory Environment Monitoring and Alert System, v1.22</h1>
+  <h1>Laboratory Environment Monitoring and Alert System, v1.23</h1>
 </center>"
 
 echo $pageheader > $HEADERFILE
@@ -57,8 +57,8 @@ while [ true ]
 do
   clear
   echo " "
-  echo "LEMAS Website builder, v1.22"
-  echo "Michael Braine, March 2019 (September 2017)"
+  echo "LEMAS Website builder, v1.23"
+  echo "Michael Braine, April 2019 (September 2017)"
   echo "michael.braine@nist.gov"
   echo " "
   echo "Builder started $starttime"
@@ -124,6 +124,7 @@ do
   pagefooter="<body>
     <h3>Available website navigational directory</h3>
     <p><strong><a href='/index.html'>Home - System Status</a></strong></p>
+    <p><strong><a href='/ArchivedData/'>Archived Data</a></strong></p>
     <ul style='list-style: none;'>"
 
   echo $pagefooter > $FOOTERFILE                                                #write current footer to footer file
@@ -180,11 +181,14 @@ do
         echo $pagefooter >> $FOOTERFILE                                         #append current footer to footer file
       fi
     done < $buildingslist
-    pagefooter="</ul></ul>"                                                     #append current footer to footer file
+    pagefooter="</ul>"                                                          #append current footer to footer file
+    echo $pagefooter >> $FOOTERFILE                                             #append current footer to footer file
   done < $groupslist
+  pagefooter="</ul>"                                                            #append current footer to footer file
+  echo $pagefooter >> $FOOTERFILE                                               #append current footer to footer file
   unset IFS
 
-  pagefooter="</ul></ul></ul><br>
+  pagefooter="<br>
   <ul style='list-style: none;'>
     <li>The data displayed does not automatically update in your browser. You must manually refresh the page to see new data.</li>
     <li>This website rebuilds itself every $TIMETOSLEEP seconds.</li>
@@ -203,7 +207,7 @@ do
     </li>
     </ol>
   </ul>
-</body>"
+  </body>"
 
   echo $pagefooter >> $FOOTERFILE                                               #append current footer to footer file
 

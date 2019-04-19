@@ -19,7 +19,12 @@ Group685.10, 220, A16,  Line Scale Interferometer Laboratory,                /ho
 Group685.10, 220, A58,  Large Scale Metrology Laboratory,                    /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.97.82
 Group685.10, 220, B05,  API Laboratory,                                      /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.97.138
 Group685.10, 220, B07,  API CMM Laboratory,                                  /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.97.157
+Group685.10, 220, B13,  Dilatometer Laboratory,                              /home/braine/Documents/keygen/LEMAS.rsa, pi@null
 Group685.10, 220, C03,  Tape Tunnel,                                         /home/braine/Documents/keygen/LEMAS.rsa, null
 Group685.10, 220, C05,  Laser Calibration Laboratory,                        /home/braine/Documents/keygen/LEMAS.rsa, null
 Group685.10, 221, A39,  Optical Flat Calibration Laboratory,                 /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.178.233
 Group685.10, 237, 106,  'Other G' Laboratory,                                /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.188.227
+Group685.11, 217, E114, Forensic Topography & Surface Metrology Laboratory,  /home/braine/Documents/keygen/LEMAS.rsa, dmgenv@129.6.132.167
+Group685.11, 218, E006, Surface Nanometrology Laboratory,                    /home/braine/Documents/keygen/LEMAS.rsa, dmgenv@null
+Group685.11, 219, G034, Stylus Profilometer Laboratory,                      /home/braine/Documents/keygen/LEMAS.rsa, dmgenv@129.6.132.166
+

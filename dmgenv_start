@@ -1,0 +1,2 @@
+#!/bin/sh
+sh /home/$USER/BraineCode/LEMAS/LEMASmaster/EnvWebUpdate.sh
