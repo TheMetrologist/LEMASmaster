@@ -39,6 +39,7 @@ import numpy as np #pylint: disable=C0413
 from bokeh.plotting import figure, output_file, save, ColumnDataSource #pylint: disable=C0413
 from bokeh.models import HoverTool #pylint: disable=C0413
 # __file__ = '/home/braine/BraineCode/LEMAS/LEMASmaster/LEMASmasterscripts'
+# os.chdir(__file__+'/..')
 install_location = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.abspath(os.path.join(install_location, '..')))
 from variables import * #pylint: disable=C0413, W0401, W0614
@@ -553,8 +554,8 @@ for igroup, _ in enumerate(listgroups):
                 bar3 = plt.bar(ind, nlaboutages[:, 3].astype(int), graphBarwidth, color='#858585', label='Temperature and humidity events', bottom=nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)) #stack combined events
                 plt.grid(axis='y')
                 plt.xticks(ind, nlaboutages[:, 0], fontsize=fontsizeXticks, rotation='vertical')
-                plt.yticks(range(0, max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+1, int(np.ceil((max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+1)/8))), fontsize=fontsizeYticks)
-                plt.ylim(bottom=0)
+                plt.yticks(range(0, max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+3, int(np.ceil((max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+3)/8))), fontsize=fontsizeYticks)
+                plt.ylim(bottom=0, top=np.max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+2)
                 plt.ylabel('Number of Events', fontsize=fontsizeYticks)
                 plt.legend(bbox_to_anchor=(0.5, 0.99), loc='upper center', ncol=3)
                 plt.title('Laboratory '+listbldgs[ibldg]+'/'+listlabs[ilab]+'\nEnvironment events by month, past '+str(nmonths)+' months\nGenerated '+str(currenttime), fontsize=fontsizetitle)
@@ -615,8 +616,8 @@ for igroup, _ in enumerate(listgroups):
                 bar3 = plt.bar(ind, nlaboutages[:, 3].astype(int), graphBarwidth, color='#858585', label='Temperature and humidity events', bottom=nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)) #stack combined events
                 plt.grid(axis='y')
                 plt.xticks(ind, nlaboutages[:, 0], fontsize=fontsizeXticks, rotation='vertical')
-                plt.yticks(range(0, max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+1, int(np.ceil((max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+1)/8))), fontsize=fontsizeYticks)
-                plt.ylim(bottom=0)
+                plt.yticks(range(0, max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+3, int(np.ceil((max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+3)/8))), fontsize=fontsizeYticks)
+                plt.ylim(bottom=0, top=np.max(nlaboutages[:, 1].astype(int)+nlaboutages[:, 2].astype(int)+nlaboutages[:, 3].astype(int))+2)
                 plt.ylabel('Number of Events', fontsize=fontsizeYticks)
                 plt.legend(bbox_to_anchor=(0.5, 0.99), loc='upper center', ncol=3)
                 plt.title('Laboratory '+listbldgs[ibldg]+'/'+listlabs[ilab]+'\nEnvironment events by month, past '+str(nmonths)+' months\nGenerated '+str(currenttime), fontsize=fontsizetitle)
@@ -758,8 +759,8 @@ for igroup, _ in enumerate(listgroups):
             bar3 = plt.bar(ind, nbldgoutages[:, 3].astype(int), graphBarwidth, color='#858585', label='Temperature and humidity events', bottom=nbldgoutages[:, 1].astype(int)+nbldgoutages[:, 2].astype(int)) #stack combined events
             plt.grid(axis='y')
             plt.xticks(ind, nbldgoutages[:, 0], fontsize=fontsizeXticks, rotation='vertical')
-            plt.yticks(range(0, max(nbldgoutages[:, 1].astype(int)+nbldgoutages[:, 2].astype(int)+nbldgoutages[:, 3].astype(int))+5, int(np.ceil((max(nbldgoutages[:, 1].astype(int)+nbldgoutages[:, 2].astype(int)+nbldgoutages[:, 3].astype(int))+5)/8))), fontsize=fontsizeYticks)
-            plt.ylim(bottom=0)
+            plt.yticks(range(0, max(nbldgoutages[:, 1].astype(int)+nbldgoutages[:, 2].astype(int)+nbldgoutages[:, 3].astype(int))+3, int(np.ceil((max(nbldgoutages[:, 1].astype(int)+nbldgoutages[:, 2].astype(int)+nbldgoutages[:, 3].astype(int))+3)/8))), fontsize=fontsizeYticks)
+            plt.ylim(bottom=0, top=np.max(nbldgoutages[:, 1].astype(int)+nbldgoutages[:, 2].astype(int)+nbldgoutages[:, 3].astype(int))+2)
             plt.ylabel('Number of Events', fontsize=fontsizeYticks)
             plt.legend(bbox_to_anchor=(0.5, 0.99), loc='upper center', ncol=3)
             plt.title('Building '+listbldgs[ibldg]+'\nEnvironment events by laboratory, past '+str(nmonths)+' months\nGenerated '+str(currenttime), fontsize=fontsizetitle)
@@ -861,8 +862,8 @@ for igroup, _ in enumerate(listgroups):
         bar3 = plt.bar(ind, ngroupoutages[:, 3].astype(int), graphBarwidth, color='#858585', label='Temperature and humidity events', bottom=ngroupoutages[:, 1].astype(int)+ngroupoutages[:, 2].astype(int)) #stack combined events
         plt.grid(axis='y')
         plt.xticks(ind, ngroupoutages[:, 0], fontsize=fontsizeXticks, rotation='vertical')
-        plt.yticks(range(0, max(ngroupoutages[:, 1].astype(int)+ngroupoutages[:, 2].astype(int)+ngroupoutages[:, 3].astype(int))+10, int(np.ceil((max(ngroupoutages[:, 1].astype(int)+ngroupoutages[:, 2].astype(int)+ngroupoutages[:, 3].astype(int))+10)/8))), fontsize=fontsizeYticks)
-        plt.ylim(bottom=0)
+        plt.yticks(range(0, max(ngroupoutages[:, 1].astype(int)+ngroupoutages[:, 2].astype(int)+ngroupoutages[:, 3].astype(int))+3, int(np.ceil((max(ngroupoutages[:, 1].astype(int)+ngroupoutages[:, 2].astype(int)+ngroupoutages[:, 3].astype(int))+3)/8))), fontsize=fontsizeYticks)
+        plt.ylim(bottom=0, top=np.max(ngroupoutages[:, 1].astype(int)+ngroupoutages[:, 2].astype(int)+ngroupoutages[:, 3].astype(int))+2)
         plt.ylabel('Number of Events', fontsize=fontsizeYticks)
         plt.legend(bbox_to_anchor=(0.5, 0.99), loc='upper center', ncol=3)
         plt.title(listgroups[igroup]+'\nEnvironment events by building, past '+str(nmonths)+' months\nGenerated '+str(currenttime), fontsize=fontsizetitle)
@@ -974,8 +975,8 @@ if len(nmainoutages) != 0: #pylint: disable=C1801
     bar3 = plt.bar(ind, nmainoutages[:, 3].astype(int), graphBarwidth, color='#858585', label='Temperature and humidity events', bottom=nmainoutages[:, 1].astype(int)+nmainoutages[:, 2].astype(int)) #stack combined events
     plt.grid(axis='y')
     plt.xticks(ind, nmainoutages[:, 0], fontsize=fontsizeXticks, rotation='vertical')
-    plt.yticks(range(0, max(nmainoutages[:, 1].astype(int))+max(nmainoutages[:, 2].astype(int))+max(nmainoutages[:, 3].astype(int))+10, int(np.ceil((max(nmainoutages[:, 1].astype(int)+nmainoutages[:, 2].astype(int)+nmainoutages[:, 3].astype(int))+10)/8))), fontsize=fontsizeYticks)
-    plt.ylim(bottom=0)
+    plt.yticks(range(0, max(nmainoutages[:, 1].astype(int))+max(nmainoutages[:, 2].astype(int))+max(nmainoutages[:, 3].astype(int))+3, int(np.ceil((max(nmainoutages[:, 1].astype(int)+nmainoutages[:, 2].astype(int)+nmainoutages[:, 3].astype(int))+3)/8))), fontsize=fontsizeYticks)
+    plt.ylim(bottom=0, top=np.max(nmainoutages[:, 1].astype(int)+nmainoutages[:, 2].astype(int)+nmainoutages[:, 3].astype(int))+2)
     plt.ylabel('Number of Events', fontsize=fontsizeYticks)
     plt.legend(bbox_to_anchor=(0.5, 0.99), loc='upper center', ncol=3)
     plt.title('Environment events by group, past '+str(nmonths)+' months\nGenerated '+str(currenttime), fontsize=fontsizetitle)

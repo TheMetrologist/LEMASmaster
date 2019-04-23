@@ -145,7 +145,7 @@ cat >> $savefilepath <<- _EOF_
       </center>
       <h3>Universal settings</h3>
       <strong>Current NoContact list</strong>
-      <p>The NoContact list temporarily suppresses messages to users on the list, e.g. for users during travel when an outage message may incur roaming charges.</p>
+      <p>The NoContact list temporarily suppresses messages to users on the list, e.g. for users on travel when an outage message may incur roaming charges.</p>
       <p>email <i><a href="mailto:michael.braine@nist.gov">michael.braine@nist.gov</a></i> to be added to or removed from the list.</p>
       <ul style='list-style: none;'>
 _EOF_
