@@ -164,17 +164,19 @@ do
           labname=$(echo $labname | awk '$1=$1')
           rsacreds=$(echo $rsacreds | awk '$1=$1')
           hostaddr=$(echo $hostaddr | awk '$1=$1')
-
           if [ "$labbuilding" = "$building" ]                                   #if current lab belongs to current building
           then
-            if [ $((nloops % 2)) -eq '0' ]
-            then                                                                #if even loop number, no background color for lab link text
-              pagefooter="<tr><td>&nbsp;<a href='/Group$group/$building/$lab/index.html'>$lab, $labname</a>&nbsp;</td> <td>&nbsp;<a href='/Group$group/$building/$lab/downloads.html'> Downloads</a>&nbsp;</td></tr>"
-            else                                                                #if odd loop number, gray background color for lab link text
-              pagefooter="<tr style='BACKGROUND-COLOR: LightGray'><td>&nbsp;<a href='/Group$group/$building/$lab/index.html'>$lab, $labname</a>&nbsp;</td> <td>&nbsp;<a href='/Group$group/$building/$lab/downloads.html'> Downloads</a>&nbsp;</td></tr>"
+            if [ "$labgroup" = "Group$group" ]
+            then
+              if [ $((nloops % 2)) -eq '0' ]
+              then                                                                #if even loop number, no background color for lab link text
+                pagefooter="<tr><td>&nbsp;<a href='/Group$group/$building/$lab/index.html'>$lab, $labname</a>&nbsp;</td> <td>&nbsp;<a href='/Group$group/$building/$lab/downloads.html'> Downloads</a>&nbsp;</td></tr>"
+              else                                                                #if odd loop number, gray background color for lab link text
+                pagefooter="<tr style='BACKGROUND-COLOR: LightGray'><td>&nbsp;<a href='/Group$group/$building/$lab/index.html'>$lab, $labname</a>&nbsp;</td> <td>&nbsp;<a href='/Group$group/$building/$lab/downloads.html'> Downloads</a>&nbsp;</td></tr>"
+              fi
+              nloops=$((nloops + 1))
+              echo $pagefooter >> $FOOTERFILE                                     #append current footer to footer file
             fi
-            nloops=$((nloops + 1))
-            echo $pagefooter >> $FOOTERFILE                                     #append current footer to footer file
           fi
         done < $labslist
         pagefooter="</table></ul>"
@@ -195,6 +197,7 @@ do
     <li><strong>Page last updated:</strong> $(date)</li>
     <br>
     <li>This gift of data is brought to you and maintained by Michael Braine (<i><a href='mailto:michael.braine@nist.gov'>michael.braine@nist.gov</a></i>), Dimensional Metrology Group 685.10, PML. October, 2017</li>
+    <li>The NIST distribution of LEMAS source, including sensor manuals and installation instructions, is available on NIST's internal gitlab server: <a href='https://gitlab.nist.gov/gitlab/braine/lemasdist'>https://gitlab.nist.gov/gitlab/braine/lemasdist</a>.</li>
     <li>The public distribution of LEMAS source, including sensor manuals and installation instructions, is available on github: <a href='https://github.com/usnistgov/LEMASdistPub'>https://github.com/usnistgov/LEMASdistPub</a>.</li>
     <li>The source for the website construction and many-environment analysis system is available on github: <a href='https://github.com/usnistgov/LEMASmaster'>https://github.com/usnistgov/LEMASmaster</a>.</li>
     <li>If you use <i>dmgenv.nist.gov</i>, and subsequently the LEMAS devices, then you agree to the terms:</li>
