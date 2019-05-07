@@ -125,6 +125,7 @@ do
     <h3>Available website navigational directory</h3>
     <p><strong><a href='/index.html'>Home - System Status</a></strong></p>
     <p><strong><a href='/ArchivedData/'>Archived Data</a></strong></p>
+    <p><strong><a href='http://dmgenv.nist.gov:8888/notebooks/fringefinder.ipynb'>Jupyter Notebook: Fringefinder</a></strong></p>
     <ul style='list-style: none;'>"
 
   echo $pagefooter > $FOOTERFILE                                                #write current footer to footer file

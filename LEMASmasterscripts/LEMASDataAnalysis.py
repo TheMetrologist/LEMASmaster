@@ -97,6 +97,7 @@ statsdir = '/var/www/dmgenv.nist.gov/statistics/'
 #file structure '/var/www/dmgenv.nist.gov/EnvData/<group>/<building>/<lab>'
 listgroups = next(os.walk(WEBBASEDIR))[1]                                       #list all folders in EnvironmentData
 del listgroups[listgroups.index('ArchivedData')]                                #remove ArchivedData directory from list
+del listgroups[listgroups.index('JupyterNotebooks')]                            #remove ArchivedData directory from list
 
 nmainoutages = np.array([[]])
 # testtime = datetime(2018, 4, 6, 8, 44, 6, 632526)
