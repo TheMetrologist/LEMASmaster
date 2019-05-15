@@ -526,7 +526,7 @@ for igroup, _ in enumerate(listgroups):
 
                 plt.figure("Lab Temperature Histogram", figsize=(12.8, 7.2), dpi=dpi_set)
                 plt.cla()
-                plt.hist(labtemperature_stats, bins=nbinsT, alpha=1)
+                plt.hist(labtemperature_stats, bins=nbinsT, alpha=1, edgecolor='k')
                 plt.xlabel('Temperature (deg. C)', fontsize=fontsizeXticks)
                 plt.ylabel('Count, ~90 second period', fontsize=fontsizeYticks)
                 plt.xticks(np.arange(np.floor(min(labtemperature_stats)), np.ceil(max(labtemperature_stats)), tickspacing_T), fontsize=fontsizeXticks, rotation='vertical')
@@ -537,7 +537,7 @@ for igroup, _ in enumerate(listgroups):
 
                 plt.figure("Lab Humidity Histogram", figsize=(12.8, 7.2), dpi=dpi_set)
                 plt.cla()
-                plt.hist(labhumidity_stats, bins=nbinsRH, alpha=1)
+                plt.hist(labhumidity_stats, bins=nbinsRH, alpha=1, edgecolor='k')
                 plt.xlabel('Humdity (%RH)', fontsize=fontsizeXticks)
                 plt.ylabel('Count, ~90 second period', fontsize=fontsizeYticks)
                 plt.xticks(np.arange(np.floor(min(labhumidity_stats)), np.ceil(max(labhumidity_stats)), tickspacing_RH), fontsize=fontsizeXticks, rotation='vertical')
@@ -588,7 +588,7 @@ for igroup, _ in enumerate(listgroups):
 
                 plt.figure("Lab Temperature Histogram", figsize=(12.8, 7.2), dpi=dpi_set)
                 plt.cla()
-                plt.hist(labtemperature_stats, bins=nbinsT, alpha=1)
+                plt.hist(labtemperature_stats, bins=nbinsT, alpha=1, edgecolor='k')
                 plt.xlabel('Temperature (deg. C)', fontsize=fontsizeXticks)
                 plt.ylabel('Count, ~90 second period', fontsize=fontsizeYticks)
                 plt.xticks(np.arange(np.floor(min(labtemperature_stats)), np.ceil(max(labtemperature_stats)), tickspacing_T), fontsize=fontsizeXticks, rotation='vertical')
@@ -599,7 +599,7 @@ for igroup, _ in enumerate(listgroups):
 
                 plt.figure("Lab Humidity Histogram", figsize=(12.8, 7.2), dpi=dpi_set)
                 plt.cla()
-                plt.hist(labhumidity_stats, bins=nbinsRH, alpha=1)
+                plt.hist(labhumidity_stats, bins=nbinsRH, alpha=1, edgecolor='k')
                 plt.xlabel('Humdity (%RH)', fontsize=fontsizeXticks)
                 plt.ylabel('Count, ~90 second period', fontsize=fontsizeYticks)
                 plt.xticks(np.arange(np.floor(min(labhumidity_stats)), np.ceil(max(labhumidity_stats)), tickspacing_RH), fontsize=fontsizeXticks, rotation='vertical')

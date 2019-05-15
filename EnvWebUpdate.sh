@@ -107,7 +107,6 @@ do
   unset IFS
 
   chown -R $USER:$USER $WEBBASEDIR
-  chmod -R 755 $WEBBASEDIR
   #//////////////////////////////Python scripts\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   #process environment data that will be pushed to webpages
   echo " "
@@ -125,7 +124,7 @@ do
     <h3>Available website navigational directory</h3>
     <p><strong><a href='/index.html'>Home - System Status</a></strong></p>
     <p><strong><a href='/ArchivedData/'>Archived Data</a></strong></p>
-    <p><strong><a href='http://dmgenv.nist.gov:8888/notebooks/fringefinder.ipynb'>Jupyter Notebook: Fringefinder</a></strong></p>
+    <p><strong><a href='http://dmgenv.nist.gov:8888/notebooks/fringefinder.ipynb'>Jupyter Notebook: Fringefinder</a></strong> and the <strong><a href='/JupyterNotebooks/results.html'>user-generated results</a></strong>, updated every 5 minutes.</p>
     <ul style='list-style: none;'>"
 
   echo $pagefooter > $FOOTERFILE                                                #write current footer to footer file
