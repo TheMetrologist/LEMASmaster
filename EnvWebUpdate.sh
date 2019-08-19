@@ -124,12 +124,9 @@ do
     <h3>Available website navigational directory</h3>
     <p><strong><a href='/index.html'>Home - System Status</a></strong></p>
     <p><strong><a href='/ArchivedData/'>Archived Data</a></strong></p>
-<<<<<<< HEAD
     <p><strong><a href='/JupyterNotebooks/ImageAnalysisVisionInterferometers.pdf'>Fringefinder paper itself</a></strong> (under review by co-authors)
     <p><strong>Fringefinder paper supplement, <a href='http://dmgenv.nist.gov:8888/notebooks/fringefinder.ipynb'>Jupyter Notebook: Fringefinder</a></strong> and the <strong><a href='/JupyterNotebooks/results.html'>user-generated results</a></strong>, updated every 5 minutes.</p>
-=======
     <p><strong><a href='http://dmgenv.nist.gov:8888/notebooks/fringefinder.ipynb'>Jupyter Notebook: Fringefinder</a></strong> and the <strong><a href='/JupyterNotebooks/results.html'>user-generated results</a></strong>, updated every 5 minutes.</p>
->>>>>>> 1ffce95c6a07266ab1cd6ad30280107ff7ced557
     <ul style='list-style: none;'>"
 
   echo $pagefooter > $FOOTERFILE                                                #write current footer to footer file
