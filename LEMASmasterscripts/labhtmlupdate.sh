@@ -44,29 +44,29 @@ pageheader=$6
 pagefooter=$7
 LEMASmasterdir=$8
 
-savefilepath=$WEBBASEDIR/data/$group/$building/$lab/index.html
+savefilepath=$WEBBASEDIR/data/Group$group/$building/$lab/index.html
 statspath=$WEBBASEDIR''statistics/$building'_'$lab.stats
 labsettingspath=$WEBBASEDIR/labsettings/$building'_'$lab.labsettings
-Tgraphpath=$WEBBASEDIR/data/$group/$building/$lab/$building'_'$lab''-T.html
-RHgraphpath=$WEBBASEDIR/data/$group/$building/$lab/$building'_'$lab''-RH.html
-outagesgraphpath=/$group/$building/$lab/$building'_'$lab''-outages.png
-Thistpath=/$group/$building/$lab/$building'_'$lab''-Thist.png
-RHhistpath=/$group/$building/$lab/$building'_'$lab''-RHhist.png
+Tgraphpath=$WEBBASEDIR/data/Group$group/$building/$lab/$building'_'$lab''-T.html
+RHgraphpath=$WEBBASEDIR/data/Group$group/$building/$lab/$building'_'$lab''-RH.html
+outagebarpath=$WEBBASEDIR/data/Group$group/$building/$lab/$building'_'$lab''-outages.html
+Thistpath=$WEBBASEDIR/data/Group$group/$building/$lab/$building'_'$lab''-Thist.html
+RHhistpath=$WEBBASEDIR/data/Group$group/$building/$lab/$building'_'$lab''-RHhist.html
 
-#///////////////////////////Load variables from text\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-nmonths=$(cat $LEMASmasterdir/variables.py | grep nmonths*=)
+#///////////////////////////Load var/LEMASvar from text\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+nmonths=$(cat $LEMASmasterdir/var/LEMASvar.py | grep nmonths*=)
 nmonths=${nmonths#nmonths*=}
 
-IMGWIDTH=$(cat $LEMASmasterdir/variables.py | grep statIMGWIDTH*=)
+IMGWIDTH=$(cat $LEMASmasterdir/var/LEMASvar.py | grep statIMGWIDTH*=)
 IMDWIDTH=${statIMGWIDTH#statIMGWIDTH*=}
 
-IMGHEIGHT=$(cat $LEMASmasterdir/variables.py | grep statIMGHEIGHT*=)
+IMGHEIGHT=$(cat $LEMASmasterdir/var/LEMASvar.py | grep statIMGHEIGHT*=)
 IMGHEIGHT=${statIMGHEIGHT#statIMGHEIGHT*=}
 
-graphtime=$(cat $LEMASmasterdir/variables.py | grep graphtime*=)
+graphtime=$(cat $LEMASmasterdir/var/LEMASvar.py | grep graphtime*=)
 graphtime=${graphtime#graphtime*=}
 
-inter_time=$(cat $LEMASmasterdir/variables.py | grep inter_time*=)
+inter_time=$(cat $LEMASmasterdir/var/LEMASvar.py | grep inter_time*=)
 inter_time=${inter_time#inter_time*=}
 inter_time=$((inter_time/24/7))
 
@@ -97,11 +97,7 @@ avgRH=${avgRH#avgRH}
 
 #////////////////////////////Generate lab#.html\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 cat > $savefilepath <<- _EOF_
-  <html>
-    <head>
-      <title>NIST LEMAS - $building/$lab</title>
-    </head>
-    <body>
+      <title>NIST LEMAS Lab $building/$lab</title>
 _EOF_
 cat $pageheader >> $savefilepath
 cat >> $savefilepath <<- _EOF_
@@ -129,7 +125,9 @@ cat >> $savefilepath <<- _EOF_
         <h3>Statistics for $building/$lab</h3>
         <h4>Environment Events by Month</h4>
         <h4>Past $nmonths months</h4>
-        <img src="$outagesgraphpath" width="$IMGWIDTH" height="$IMGHEIGHT">
+_EOF_
+cat $outagebarpath >> $savefilepath
+cat >> $savefilepath <<- _EOF_
         <table>
           <tr>
             <td>Number of temperature events: </td>
@@ -155,7 +153,9 @@ cat >> $savefilepath <<- _EOF_
         <br><br>
         <h4>Temperature distribution</h4>
         <h4>Past $nmonths months</h4>
-        <img src="$Thistpath" width="$IMGWIDTH" height="$IMGHEIGHT">
+_EOF_
+cat $Thistpath >> $savefilepath
+cat >> $savefilepath <<- _EOF_
         <table>
           <tr>
             <td>Highest temperature: </td>
@@ -171,7 +171,9 @@ cat >> $savefilepath <<- _EOF_
         <br><br>
         <h4>Humidity distribution</h4>
         <h4>Past $nmonths months</h4>
-        <img src="$RHhistpath" width="$IMGWIDTH" height="$IMGHEIGHT">
+_EOF_
+cat $RHhistpath >> $savefilepath
+cat >> $savefilepath <<- _EOF_
         <table>
           <tr>
             <td>Highest humidity: </td>
@@ -191,9 +193,5 @@ _EOF_
 cat $labsettingspath >> $savefilepath
 cat >> $savefilepath <<- _EOF_
       </p>
-    </body>
 _EOF_
 cat $pagefooter >> $savefilepath
-cat >> $savefilepath <<- _EOF_
-  </html>
-_EOF_

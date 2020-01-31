@@ -41,26 +41,26 @@ pageheader=$5
 pagefooter=$6
 LEMASmasterdir=$7
 
-savefilepath=$WEBBASEDIR/data/'Group'$group/$building/index.html
+savefilepath=$WEBBASEDIR/data/Group$group/$building/index.html
 statspath=$WEBBASEDIR/statistics/$building.stats
-Tgraphpath=$WEBBASEDIR/data/Group$group/$building/$building''-T.html
-RHgraphpath=$WEBBASEDIR/data/Group$group/$building/$building''-RH.html
-outagesgraphpath=/Group$group/$building/$building''-outages.png
+Tgraphpath=$WEBBASEDIR/data/Group$group/$building/$building-T.html
+RHgraphpath=$WEBBASEDIR/data/Group$group/$building/$building-RH.html
+outagebarpath=$WEBBASEDIR/data/Group$group/$building/$building-outages.html
 
-#///////////////////////////Load variables from text\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-nmonths=$(cat $LEMASmasterdir/variables.py | grep nmonths*=)
+#///////////////////////////Load var/LEMASvar from text\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+nmonths=$(cat $LEMASmasterdir/var/LEMASvar.py | grep nmonths*=)
 nmonths=${nmonths#nmonths*=}
 
-IMGWIDTH=$(cat $LEMASmasterdir/variables.py | grep statIMGWIDTH*=)
+IMGWIDTH=$(cat $LEMASmasterdir/var/LEMASvar.py | grep statIMGWIDTH*=)
 IMDWIDTH=${statIMGWIDTH#statIMGWIDTH*=}
 
-IMGHEIGHT=$(cat $LEMASmasterdir/variables.py | grep statIMGHEIGHT*=)
+IMGHEIGHT=$(cat $LEMASmasterdir/var/LEMASvar.py | grep statIMGHEIGHT*=)
 IMGHEIGHT=${statIMGHEIGHT#statIMGHEIGHT*=}
 
-graphtime=$(cat $LEMASmasterdir/variables.py | grep graphtime*=)
+graphtime=$(cat $LEMASmasterdir/var/LEMASvar.py | grep graphtime*=)
 graphtime=${graphtime#graphtime*=}
 
-inter_time=$(cat $LEMASmasterdir/variables.py | grep inter_time*=)
+inter_time=$(cat $LEMASmasterdir/var/LEMASvar.py | grep inter_time*=)
 inter_time=${inter_time#inter_time*=}
 inter_time=$((inter_time/24/7))
 
@@ -85,15 +85,11 @@ maxRH=${maxRH#maxRH}
 
 #////////////////////////////Generate <Building#>.html\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 cat > $savefilepath <<- _EOF_
-  <html>
-    <head>
-      <title>NIST LEMAS $buildingname</title>
-    </head>
-    <body>
+      <title>NIST LEMAS Building $building</title>
 _EOF_
 cat $pageheader >> $savefilepath
 cat >> $savefilepath <<- _EOF_
-      <center><h2>$buildingname</h2></center>
+      <center><h2>$buildingname, Building $building</h2></center>
       <br>
       <center>
         <h3>Most Recent Environment</h3>
@@ -115,7 +111,9 @@ cat >> $savefilepath <<- _EOF_
         <h3>Statistics for $building</h3>
         <h4>Environment Events by Laboratory</h4>
         <h4>Past $nmonths months</h4>
-        <img src="$outagesgraphpath" width="$IMGWIDTH" height="$IMGHEIGHT">
+_EOF_
+cat $outagebarpath >> $savefilepath
+cat >> $savefilepath <<- _EOF_
       </center>
       <br>
       <center>
@@ -155,6 +153,3 @@ cat >> $savefilepath <<- _EOF_
     </body>
 _EOF_
 cat $pagefooter >> $savefilepath
-cat >> $savefilepath <<- _EOF_
-  </html>
-_EOF_
