@@ -74,10 +74,13 @@ class Lab():
         self.THistogram = ""
         self.RHHistogram = ""
         self.OutageBars = ""
+        self.GetRecentData()
+        self.AnalyzeStatistics()
 
     def GetOutageDataFromPeriod(self, start, end):
         start = datetime.strptime(start, "%B %d, %Y")
         end = datetime.strptime(end, "%B %d, %Y")
+        nOutages = ""
 
         # generate month and year component of filename for date range
         yoffset = 0
@@ -90,11 +93,12 @@ class Lab():
                     moffset += 1
             else:
                 while start.month-1+moffset < 12:
-                    MonthYYYY.append(months[start.month-1+moffset]+str(start.year+yoffset))
+                    MonthYYYY.append(months[start.month-1+moffset] + " " + str(start.year+yoffset))
                     moffset += 1
             yoffset += 1
             moffset = -start.month+1
 
+        first = True
         for ifile, filepart in enumerate(MonthYYYY):
             filemonth = filepart.split(" ")[0]
             fileyear = filepart.split(" ")[1]
@@ -103,7 +107,7 @@ class Lab():
                     filedata = list(zip(*csv.reader(openedfile)))
 
                 PandaDate = pd.period_range(filepart, freq="M", periods=1)
-                if ifile == 0:
+                if "pandas" not in str(type(nOutages)):
                     nOutages = pd.DataFrame(np.array([[0, 0, 0, 0]]), columns=["nToutages", "nRHoutages", "nCombined", "nUnique"], index=PandaDate)
                 else:
                     nOutages = nOutages.append(pd.DataFrame(np.array([[0, 0, 0, 0]]), columns=["nToutages", "nRHoutages", "nCombined", "nUnique"], index=PandaDate))
@@ -117,29 +121,30 @@ class Lab():
                         WasTout = wasTout_header[1::]                           # gather whether lab event was temperature outage, remove header
                         wasRHout_header = filedata[4]
                         WasRHout = wasRHout_header[1::]                         # gather whether lab event was humidity outage, remove header
-                        CombinedData = np.vstack((WasTout, WasRHout))
+                        CombinedData = np.vstack((LabAxesTime_outage, WasTout, WasRHout))
                         CombinedData = np.transpose(CombinedData)
                         CombinedData = CombinedData[CombinedData[:, 0].argsort()]
 
-                        if ifile == 0:                                          # if first file in analysis, determine first outage type and increase count
+                        if first:                                          # if first file in analysis, determine first outage type and increase count
+                            first = False
                             nOutages.loc[str(fileyear) + "-" + str(months.index(filemonth)+1)]["nUnique"] += 1 # increase count of unique events
-                            if (CombinedData[0, 3] == 'TEMPERATURE OUTAGE') and (CombinedData[0, 4] != 'HUMIDITY OUTAGE'): # temperature only outage
+                            if (CombinedData[0, 1] == 'TEMPERATURE OUTAGE') and (CombinedData[0, 2] != 'HUMIDITY OUTAGE'): # temperature only outage
                                 nOutages.loc[str(fileyear) + "-" + str(months.index(filemonth)+1)]["nToutages"] += 1
-                            if (CombinedData[0, 4] == 'HUMIDITY OUTAGE') and (CombinedData[0, 3] != 'TEMPERATURE OUTAGE'): # humidity ounly outage
+                            if (CombinedData[0, 2] == 'HUMIDITY OUTAGE') and (CombinedData[0, 1] != 'TEMPERATURE OUTAGE'): # humidity ounly outage
                                 nOutages.loc[str(fileyear) + "-" + str(months.index(filemonth)+1)]["nRHoutages"] += 1
-                            if (CombinedData[0, 3] == 'TEMPERATURE OUTAGE') and (CombinedData[0, 4] == 'HUMIDITY OUTAGE'): # combined outage
+                            if (CombinedData[0, 1] == 'TEMPERATURE OUTAGE') and (CombinedData[0, 2] == 'HUMIDITY OUTAGE'): # combined outage
                                 nOutages.loc[str(fileyear) + "-" + str(months.index(filemonth)+1)]["nCombined"] += 1
 
                         #determine type of outage
                         for iline, _ in enumerate(LabAxesTime_outage):
                             if abs(datetime.strptime(CombinedData[iline, 0], "%Y-%m-%d %H:%M:%S") - datetime.strptime(CombinedData[iline-1, 0], "%Y-%m-%d %H:%M:%S")) > timedelta(hours=LEMASvar.normal_period): # if outside normal period, count as unique outage
                                 nOutages.loc[str(fileyear) + "-" + str(months.index(filemonth)+1)]["nUnique"] += 1 # increase count of unique events
-                                if (CombinedData[iline, 3] == 'TEMPERATURE OUTAGE') and (CombinedData[iline, 4] != 'HUMIDITY OUTAGE'): # temperature only outage
+                                if (CombinedData[iline, 1] == 'TEMPERATURE OUTAGE') and (CombinedData[iline, 2] != 'HUMIDITY OUTAGE'): # temperature only outage
                                     nOutages.loc[str(fileyear) + "-" + str(months.index(filemonth)+1)]["nToutages"] += 1 # increase count for temperature events
-                                if (CombinedData[iline, 4] == 'HUMIDITY OUTAGE') and (CombinedData[iline, 3] != 'TEMPERATURE OUTAGE'): # humidity ounly outage
+                                if (CombinedData[iline, 2] == 'HUMIDITY OUTAGE') and (CombinedData[iline, 1] != 'TEMPERATURE OUTAGE'): # humidity ounly outage
                                     nOutages.loc[str(fileyear) + "-" + str(months.index(filemonth)+1)]["nRHoutages"] += 1 # increase count for humidity events
-                            if (CombinedData[iline, 3] == 'TEMPERATURE OUTAGE') and (CombinedData[iline, 4] == 'HUMIDITY OUTAGE'): # combined outage
-                                if (CombinedData[iline-1, 3] != 'TEMPERATURE OUTAGE') or (CombinedData[iline-1, 4] != 'HUMIDITY OUTAGE'):
+                            if (CombinedData[iline, 1] == 'TEMPERATURE OUTAGE') and (CombinedData[iline, 2] == 'HUMIDITY OUTAGE'): # combined outage
+                                if (CombinedData[iline-1, 1] != 'TEMPERATURE OUTAGE') or (CombinedData[iline-1, 2] != 'HUMIDITY OUTAGE'):
                                     nOutages.loc[str(fileyear) + "-" + str(months.index(filemonth)+1)]["nUnique"] += 1 # increase count of unique events # increase count for combined events
 
             else:
@@ -200,6 +205,7 @@ class Lab():
                 LabID = np.zeros((len(LabTemperature[start::]),)).astype(str)
                 LabID[:] = self.Building + "/" + self.Room
                 self.LabEnv = pd.DataFrame(np.array([LabAxesTime[start::], LabTemperature[start::], LabHumidity[start::], LabID]).transpose(), columns=["Time", "Temperature", "Humidity", "Lab"])
+                self.LabEnv.sort_values(by="Time", inplace=True)
             else:
                 self.LabEnv = "No data"
         else:
@@ -409,6 +415,8 @@ class Lab():
                 barmode="stack",
             )
 
+    def SaveOutageBars(self):
+        if "pandas" in str(type(self.LabEnv_nmonths)):
             plotly.offline.plot(self.OutageBars, filename=self.Path + self.Building + "_" + self.Room + "-outages.html", auto_open=False)
         else:
             with open(self.Path + self.Building + "_" + self.Room + "-outages.html", "w") as openedfile:
@@ -425,6 +433,7 @@ class Lab():
                 self.GenerateEnvCharts()
                 self.GenerateHistograms()
                 self.GenerateOutageBars()
+                self.SaveOutageBars()
                 time.sleep(LEMASvar.TIMETOSLEEP)
 
     def StopThread(self):
@@ -467,6 +476,7 @@ class Building():
                 # LabsMonitored = ListLabsMonitored[0, matching]
                 LabNamesMonitored = ListLabsMonitored[1, matching]
                 self.Labs[lab.lstrip().rstrip()] = Lab(self.Group, self.Building, lab.lstrip().rstrip(), LabNamesMonitored)
+        self.AnalyzeStatistics()
 
     def AnalyzeStatistics(self):
         for ilab, lab in enumerate(self.Labs.keys()):
@@ -600,6 +610,7 @@ class Building():
             barmode="stack",
         )
 
+    def SaveOutageBars(self):
         plotly.offline.plot(self.OutageBars, filename=self.Path + self.Building + "-outages.html", auto_open=False)
 
     def UpdateAll(self):
@@ -611,6 +622,7 @@ class Building():
                 self.AnalyzeStatistics()
                 self.GenerateEnvCharts()
                 self.GenerateOutageBars()
+                self.SaveOutageBars()
                 time.sleep(LEMASvar.TIMETOSLEEP)
 
     def StopThread(self):
@@ -781,6 +793,7 @@ class Group():
             barmode="stack",
         )
 
+    def SaveOutageBars(self):
         plotly.offline.plot(self.OutageBars, filename=self.Path + self.Group + "-outages.html", auto_open=False)
 
     def UpdateAll(self):
@@ -792,6 +805,7 @@ class Group():
                 self.AnalyzeStatistics()
                 self.GenerateEnvCharts()
                 self.GenerateOutageBars()
+                self.SaveOutageBars()
                 time.sleep(LEMASvar.TIMETOSLEEP)
 
     def StopAllThreads(self):
