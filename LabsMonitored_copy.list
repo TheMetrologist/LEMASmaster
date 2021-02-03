@@ -1,7 +1,5 @@
 681.04, 218, E004, Traceable Atomic Force Microscope Laboratory,          /home/braine/Documents/keygen/LEMAS.rsa, dmgenv@129.6.132.157
 681.04, 218, F005, Critical Dimension Atomic Force Microscopy Laboratory, /home/braine/Documents/keygen/LEMAS.rsa, dmgenv@129.6.132.156
-683.12, 220, A50,  Nonlinear Optical Spectroscopy Laboratory,             /home/braine/Documents/keygen/LEMAS.rsa, dmgenv@129.6.177.203
-683.12, 222, A168, THz Spectroscopy and Imaging Laboratory,               /home/braine/Documents/keygen/LEMAS.rsa, dmgenv@129.6.147.138
 683.12, 222, B165, Time-Resolved Infrared Spectroscopy Laboratory,        /home/braine/Documents/keygen/LEMAS.rsa, dmgenv@129.6.147.137
 685.10, 219, A022, Big 'G' Laboratory,                                    /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.133.216
 685.10, 219, F030, Angle Calibration Laboratory,                          /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.133.218
@@ -24,7 +22,10 @@
 685.10, 220, A58,  Large Scale Metrology Laboratory,                      /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.97.82
 685.10, 220, B05,  API Laboratory,                                        /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.97.138
 685.10, 220, B07,  API CMM Laboratory,                                    /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.97.157
+685.10, 220, C03,  Tape Tunnel,                                           /home/braine/Documents/keygen/LEMAS.rsa, null
+685.10, 220, C05,  Laser Calibration Laboratory,                          /home/braine/Documents/keygen/LEMAS.rsa, null
 685.10, 221, A39,  Optical Flat Calibration Laboratory,                   /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.178.233
+685.10, 237, 106,  'Other G' Laboratory,                                  /home/braine/Documents/keygen/LEMAS.rsa, pi@129.6.188.227
 685.11, 217, E114, Forensic Topography & Surface Metrology Laboratory,    /home/braine/Documents/keygen/LEMAS.rsa, dmgenv@129.6.132.167
 685.11, 218, E006, Surface Nanometrology Laboratory,                      /home/braine/Documents/keygen/LEMAS.rsa, dmgenv@129.6.132.165
 685.11, 219, G034, Stylus Profilometer Laboratory,                        /home/braine/Documents/keygen/LEMAS.rsa, dmgenv@129.6.132.166

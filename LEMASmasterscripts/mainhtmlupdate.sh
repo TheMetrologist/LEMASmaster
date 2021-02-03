@@ -43,27 +43,22 @@ statuspath=$5
 LEMASmasterdir=$6
 WEBBASEDIR=$7
 
-#//////////////////////Load variables from variables.py\\\\\\\\\\\\\\\\\\\\\\\\
-nmonths=$(cat $LEMASmasterdir/variables.py | grep nmonths*=)
+#//////////////////////Load var/LEMASvar from var/LEMASvar.py\\\\\\\\\\\\\\\\\\\\\\\\
+nmonths=$(cat $LEMASmasterdir/var/LEMASvar.py | grep nmonths*=)
 nmonths=${nmonths#nmonths*=}
 
-IMGWIDTH=$(cat $LEMASmasterdir/variables.py | grep IMGWIDTH*=)
+IMGWIDTH=$(cat $LEMASmasterdir/var/LEMASvar.py | grep IMGWIDTH*=)
 IMDWIDTH=${IMGWIDTH#IMGWIDTH*=}
 
-IMGHEIGHT=$(cat $LEMASmasterdir/variables.py | grep IMGHEIGHT*=)
+IMGHEIGHT=$(cat $LEMASmasterdir/var/LEMASvar.py | grep IMGHEIGHT*=)
 IMGHEIGHT=${IMGHEIGHT#IMGHEIGHT*=}
 
-graphtime=$(cat $LEMASmasterdir/variables.py | grep graphtime*=)
+graphtime=$(cat $LEMASmasterdir/var/LEMASvar.py | grep graphtime*=)
 graphtime=${graphtime#graphtime*=}
 
 #////////////////////////////Generate main.html\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 cat > $savefilepath <<- _EOF_
-  <!doctype html>
-  <html>
-    <head>
-      <title>NIST LEMAS Home - System Status</title>
-    </head>
-    <body>
+      <title>NIST LEMAS Home</title>
 _EOF_
 cat $pageheader >> $savefilepath
 cat >> $savefilepath <<- _EOF_
@@ -120,13 +115,13 @@ do
   do
     if [ $i -eq 0 ]
     then
-      echo "<tr><td><strong><a href='/$group/$building/index.html'>$building Labs</a></strong></td><td></td><td></td></tr><tr>" >> $savefilepath
+      echo "<tr><td><strong>$building Labs</strong></td><td></td><td></td></tr><tr>" >> $savefilepath
     fi
     i=$((i+1))
     building=$(echo $labID | cut -d '/' -f1)
     lab=$(echo $labID | cut -d '/' -f2)
     echo "<td>&nbsp;</td>" >> $savefilepath
-    echo "<td><a href='/$group/$building/$lab/index.html'>$building/$lab</a></td>" >> $savefilepath
+    echo "<td><a href='/Group$group/$building/$lab/index.html'>$building/$lab</a></td>" >> $savefilepath
     echo "<td>$status</td></tr>" >> $savefilepath
   done < $file
 done
@@ -138,11 +133,6 @@ cat >> $savefilepath <<- _EOF_
     </body>
     <br>
     <body>
-      <center>
-        <h3>Environment Events by Group</h3>
-        <h4>Past $nmonths months</h4>
-        <img src="$outagesgraphpath" width="$IMGWIDTH" height="$IMGHEIGHT">
-      </center>
       <h3>Universal settings</h3>
       <strong>Current NoContact list</strong>
       <p>The NoContact list temporarily suppresses messages to users on the list, e.g. for users on travel when an outage message may incur roaming charges.</p>
@@ -180,9 +170,5 @@ unset IFS
 cat >> $savefilepath <<- _EOF_
       </ul>
       <br>
-    </body>
 _EOF_
 cat $pagefooter >> $savefilepath
-cat >> $savefilepath <<- _EOF_
-  </html>
-_EOF_

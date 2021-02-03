@@ -41,15 +41,11 @@ pagefooter=$6
 
 filesize=
 filedate=
-savefilepath=$WEBBASEDIR/data/$group/$building/$lab/downloads.html
-envdatadir=/data/$group/$building/$lab/
+savefilepath=$WEBBASEDIR/data/Group$group/$building/$lab/downloads.html
+envdatadir=/data/Group$group/$building/$lab/
 
 cat > $savefilepath <<- _EOF_
-  <html>
-    <head>
-      <title>NIST LEMAS - $building/$lab Downloads</title>
-    </head>
-    <body>
+      <title>NIST LEMAS $building/$lab Downloads</title>
 _EOF_
 cat $pageheader >> $savefilepath
 cat >> $savefilepath <<- _EOF_
@@ -63,10 +59,10 @@ cat >> $savefilepath <<- _EOF_
 _EOF_
 
 #loop to insert download links for *-all.env.csv
-ls -1 $WEBBASEDIR/data/$group/$building/$lab/ | grep '**-all.env.csv' | while read -r line; do
-  filesize=$(($(stat --printf="%s" $WEBBASEDIR/data/$group/$building/$lab/$line)/1024))
+ls -1 $WEBBASEDIR/data/Group$group/$building/$lab/ | grep '**-all.env.csv' | while read -r line; do
+  filesize=$(($(stat --printf="%s" $WEBBASEDIR/data/Group$group/$building/$lab/$line)/1024))
   cat >> $savefilepath <<- _EOF_
-    <tr><td><a href="/$group/$building/$lab/$line">$line</a></td><td>&nbsp;</td><td>$filesize kb</td></tr>
+    <tr><td><a href="/Group$group/$building/$lab/$line">$line</a></td><td>&nbsp;</td><td>$filesize kb</td></tr>
 _EOF_
 done
 
@@ -80,10 +76,10 @@ cat >> $savefilepath <<- _EOF_
 _EOF_
 
 #loop to insert download links for *-outages.env.csv
-ls -1 $WEBBASEDIR/data/$group/$building/$lab/ | grep '**-outages.env.csv' | while read -r line; do
-  filesize=$(stat --printf="%s" $WEBBASEDIR/data/$group/$building/$lab/$line)
+ls -1 $WEBBASEDIR/data/Group$group/$building/$lab/ | grep '**-outages.env.csv' | while read -r line; do
+  filesize=$(stat --printf="%s" $WEBBASEDIR/data/Group$group/$building/$lab/$line)
   cat >> $savefilepath <<- _EOF_
-    <tr><td><a href="/$group/$building/$lab/$line">$line</a></td><td>&nbsp;</td><td>$filesize b</td></tr>
+    <tr><td><a href="/Group$group/$building/$lab/$line">$line</a></td><td>&nbsp;</td><td>$filesize b</td></tr>
 _EOF_
 done
 
@@ -93,6 +89,3 @@ cat >> $savefilepath <<- _EOF_
 _EOF_
 
 cat $pagefooter >> $savefilepath
-cat >> $savefilepath <<- _EOF_
-  </html>
-_EOF_

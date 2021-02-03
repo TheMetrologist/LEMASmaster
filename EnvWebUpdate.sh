@@ -23,17 +23,22 @@
 #
 #///////////////////////////////////////////////////////////////////////////////
 
-LEMASmasterdir=/home/$USER/BraineCode/LEMAS/LEMASmaster
+LEMASmasterdir="/home/$USER/BraineCode/LEMAS/LEMASmaster"
+# LEMASmasterdir="/media/$USER/A/BraineCode/LEMAS/LEMASmaster/"
 WEBBASEDIR="/var/www/dmgenv.nist.gov/"
 
 #specifiy files and directories
-TIMETOSLEEP=$(cat $LEMASmasterdir/variables.py | grep TIMETOSLEEP*=)
+TIMETOSLEEP=$(cat $LEMASmasterdir/var/LEMASvar.py | grep TIMETOSLEEP*=)
 TIMETOSLEEP=${TIMETOSLEEP#TIMETOSLEEP*=}
 groupslist=$LEMASmasterdir/GroupsMonitored.list
 buildingslist=$LEMASmasterdir/BuildingsMonitored.list
 labslist=$LEMASmasterdir/LabsMonitored.list
 HEADERFILE=$WEBBASEDIR/pageheader.html
 FOOTERFILE=$WEBBASEDIR/pagefooter.html
+HEADERTEMPLATE=$LEMASmasterdir/templates/navbar.html
+FOOTERTEMPLATE=$LEMASmasterdir/templates/pagefooter.html
+ABOUTTEMPLATE=$LEMASmasterdir/templates/about.html
+CALCTEMPLATE=$LEMASmasterdir/templates/Calculators.html
 starttime=$(date)
 
 #/////////////////////Create dmgenv.nist.gov directories\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -44,12 +49,188 @@ mkdir $WEBBASEDIR/statistics 2>/dev/null
 mkdir $WEBBASEDIR/labsettings 2>/dev/null
 
 #///////////////////////////////Page Header\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-pageheader="<center>
-  <img src='/nisttag.jpg' width='305' height='100'>
-  <h1>Laboratory Environment Monitoring and Alert System, v1.23</h1>
-</center>"
+cat $HEADERTEMPLATE > $HEADERFILE
+cat $FOOTERTEMPLATE > $FOOTERFILE
 
-echo $pageheader > $HEADERFILE
+#////////////////////////////////Page Navigation Bar Construction\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+#set up navigation bar that will be on every page
+
+IFS=','
+echo "<nav>
+  <ul id='menu'>
+    <li><a class='home' href='/'>System home</a></li>
+    <li><a class='prett'>Group summaries</a>
+          <ul class='menus'>" >> $HEADERFILE
+
+# group summaries menu
+while read group groupname                                                    #loop through GroupsMonitored.list
+do
+  #remove leading and trailing spaces
+  group=$(echo $group | awk '$1=$1')
+  groupname=$(echo $groupname | awk '$1=$1')
+
+  navbar="<li><a href='/Group$group/index.html'>$groupname, $group_</a></li>"
+  echo $navbar >> $HEADERFILE                                                 #append current navbar to header file
+done < $groupslist
+echo "      </ul>
+    </li>
+    <li><a class='prett'>Building summaries</a>
+      <ul class='menus'>" >> $HEADERFILE
+
+# building summaries menu
+while read group groupname                                                    #loop through GroupsMonitored.list
+do
+  #remove leading and trailing spaces
+  group=$(echo $group | awk '$1=$1')
+  groupname=$(echo $groupname | awk '$1=$1')
+  navbar="<li class='has-submenu'><a class='prett'>$groupname, $group_</a>
+    <ul class='submenu'>"
+  echo $navbar >> $HEADERFILE
+  while read buildinggroup building buildingname                              #loop through BuildingsMonitored.list
+  do
+    #remove leading and trailing spaces
+    buildinggroup=$(echo $buildinggroup | awk '$1=$1')
+    building=$(echo $building | awk '$1=$1')
+    buildingname=$(echo $buildingname | awk '$1=$1')
+
+    if [ "$buildinggroup" = "$group" ]                                        #if current building belongs to current group
+    then
+      navbar="<li><a href='/Group$group/$building/index.html'>$buildingname, Building $building</a></li>"
+      echo $navbar >> $HEADERFILE                                             #append current navbar string to header file
+    fi
+  done < $buildingslist
+  echo "</ul>
+        </li>" >> $HEADERFILE
+done < $groupslist
+
+echo "  </ul>
+        </li>
+      <li><a class='prett'>Lab environments</a>
+        <ul class='menus'>" >> $HEADERFILE
+
+# lab environments menu
+while read group groupname                                                    #loop through GroupsMonitored.list
+do
+  #remove leading and trailing spaces
+  group=$(echo $group | awk '$1=$1')
+  groupname=$(echo $groupname | awk '$1=$1')
+  navbar="<li class='has-submenu'><a class='prett'>$groupname, $group_</a>
+            <ul class='submenu'>"
+  echo $navbar >> $HEADERFILE
+  while read buildinggroup building buildingname                              #loop through BuildingsMonitored.list
+  do
+    #remove leading and trailing spaces
+    buildinggroup=$(echo $buildinggroup | awk '$1=$1')
+    building=$(echo $building | awk '$1=$1')
+    buildingname=$(echo $buildingname | awk '$1=$1')
+
+    if [ "$buildinggroup" = "$group" ]                                       #if current building belongs to current group
+    then
+      echo "<li style='color: white; text-align: center;'><b>$buildingname, Building $building</b></li>" >> $HEADERFILE
+      while read labgroup labbuilding lab labname rsacreds hostaddr           #loop through LabsMonitored.list
+      do
+        #remove leading and trailing spaces
+        labgroup=$(echo $labgroup | awk '$1=$1')
+        labbuilding=$(echo $labbuilding | awk '$1=$1')
+        lab=$(echo $lab | awk '$1=$1')
+        labname=$(echo $labname | awk '$1=$1')
+        rsacreds=$(echo $rsacreds | awk '$1=$1')
+        hostaddr=$(echo $hostaddr | awk '$1=$1')
+        if [ "$labbuilding" = "$building" ]                                   #if current lab belongs to current building
+        then
+          if [ "$labgroup" = "$group" ]
+          then
+            navbar="<li><a href='/Group$group/$building/$lab/index.html'>$lab, $labname </a></li>"
+            echo $navbar >> $HEADERFILE                                       #append navbar to header file
+          fi
+        fi
+      done < $labslist
+    fi
+  done < $buildingslist
+  echo "</ul>
+    </li>" >> $HEADERFILE
+done < $groupslist
+
+echo "      </ul>
+      </li>
+      <li><a class='prett'>Downloads</a>
+      <ul class='menus'>" >> $HEADERFILE
+
+# downloads menu
+while read group groupname                                                    #loop through GroupsMonitored.list
+do
+  #remove leading and trailing spaces
+  group=$(echo $group | awk '$1=$1')
+  groupname=$(echo $groupname | awk '$1=$1')
+  navbar="<li class='has-submenu'><a class='prett'>$groupname, $group_</a>
+            <ul class='submenu'>"
+  echo $navbar >> $HEADERFILE
+  while read buildinggroup building buildingname                              #loop through BuildingsMonitored.list
+  do
+    #remove leading and trailing spaces
+    buildinggroup=$(echo $buildinggroup | awk '$1=$1')
+    building=$(echo $building | awk '$1=$1')
+    buildingname=$(echo $buildingname | awk '$1=$1')
+
+    if [ "$buildinggroup" = "$group" ]                                       #if current building belongs to current group
+    then
+      echo "<li style='color: white; text-align: center;'><b>$buildingname, Building $building</b></li>" >> $HEADERFILE
+      while read labgroup labbuilding lab labname rsacreds hostaddr           #loop through LabsMonitored.list
+      do
+        #remove leading and trailing spaces
+        labgroup=$(echo $labgroup | awk '$1=$1')
+        labbuilding=$(echo $labbuilding | awk '$1=$1')
+        lab=$(echo $lab | awk '$1=$1')
+        labname=$(echo $labname | awk '$1=$1')
+        rsacreds=$(echo $rsacreds | awk '$1=$1')
+        hostaddr=$(echo $hostaddr | awk '$1=$1')
+        if [ "$labbuilding" = "$building" ]                                   #if current lab belongs to current building
+        then
+          if [ "$labgroup" = "$group" ]
+          then
+            navbar="<li><a href='/Group$group/$building/$lab/downloads.html'>$lab, $labname </a></li>"
+            echo $navbar >> $HEADERFILE                                       #append navbar to header file
+          fi
+        fi
+      done < $labslist
+    fi
+  done < $buildingslist
+  echo "</ul>
+    </li>" >> $HEADERFILE
+done < $groupslist
+unset IFS
+
+echo "  </ul>
+  </li>
+  <li><a href='http://dmgenv.nist.gov/ArchivedData/'>Archived data</a></li>
+  <li><a href='http://129.6.97.77:8888/notebooks/LEMASCalculators/LEMASCalculators.ipynb'>Calculators</a></li>
+  <li style='float: right;'><a href=/about.html>About the system</a></li>
+  <li style='float: right;'><a class='prett'>Other</a>
+    <ul class='menus'>
+      <li><a href='http://dmgenv.nist.gov/JupyterNotebooks/ImageAnalysisVisionInterferometers.pdf'>Fringefinder paper</a></li>
+      <li><a href='http://dmgenv.nist.gov:8888/notebooks/fringefinder.ipynb'>Fringefinder paper supplement</a></li>
+      <li><a href='http://dmgenv.nist.gov/JupyterNotebooks/results.html'>Fringefinder supplement results</a></li>
+    </ul>
+  </li>
+  </ul>
+  </nav>
+
+  <body>
+  <div class='header'>
+  <center>
+    <img src='/nisttag.jpg' width='305' height='100'>
+    <h2>Laboratory Environment Monitoring and Alert System</h2>
+    <h3>(LEMAS)</h3>
+    </center>
+    </div>" >> $HEADERFILE
+
+cat $HEADERFILE > $WEBBASEDIR/data/about.html
+cat $ABOUTTEMPLATE >> $WEBBASEDIR/data/about.html
+
+cat $HEADERFILE > $WEBBASEDIR/data/calculators.html
+cat $CALCTEMPLATE >> $WEBBASEDIR/data/calculators.html
+cat $FOOTERTEMPLATE >> $WEBBASEDIR/data/calculators.html
+chmod -R 755 $WEBBASEDIR/data/*
 
 #///////////////////////////////Main Start\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 #loop for all eternity
@@ -57,8 +238,8 @@ while [ true ]
 do
   clear
   echo " "
-  echo "LEMAS Website builder, v1.23"
-  echo "Michael Braine, April 2019 (September 2017)"
+  echo "LEMAS Website builder, v1.24"
+  echo "Michael Braine, January 2020 (September 2017)"
   echo "michael.braine@nist.gov"
   echo " "
   echo "Builder started $starttime"
@@ -81,9 +262,9 @@ do
     hostaddr=$(echo $hostaddr | awk '$1=$1')
 
     #build directories for website and environment data
-    mkdir $WEBBASEDIR/data/$group 2>/dev/null
-    mkdir $WEBBASEDIR/data/$group/$building 2>/dev/null
-    mkdir $WEBBASEDIR/data/$group/$building/$lab 2>/dev/null
+    mkdir $WEBBASEDIR/data/Group$group 2>/dev/null
+    mkdir $WEBBASEDIR/data/Group$group/$building 2>/dev/null
+    mkdir $WEBBASEDIR/data/Group$group/$building/$lab 2>/dev/null
 
     #download data from device
     sh $LEMASmasterdir/LEMASmasterscripts/LEMASDataDownload.sh $group $building $lab $rsacreds $hostaddr $WEBBASEDIR $LEMASmasterdir
@@ -107,115 +288,6 @@ do
   unset IFS
 
   chown -R $USER:$USER $WEBBASEDIR
-  #//////////////////////////////Python scripts\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-  #process environment data that will be pushed to webpages
-  echo " "
-  echo "$(date): Processing .env.csv data and generating graphs ..."
-  /home/$USER/anaconda3/bin/python3 $LEMASmasterdir/LEMASmasterscripts/LEMASDataAnalysis.py #use python to analyze data, generate graphs and statistics for webpages
-
-  #////////////////////////////////Page Footer\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-  #set up footer that will be on every page
-  #footer is essentially directory tree links for all labs, buildings, and groups, and a link to return to home page
-  #regenerate on every loop because it contains the time of the last time the page was updated
-  echo " "
-  echo "$(date): Building footer ..."
-
-  pagefooter="<body>
-    <h3>Available website navigational directory</h3>
-    <p><strong><a href='/index.html'>Home - System Status</a></strong></p>
-    <p><strong><a href='/ArchivedData/'>Archived Data</a></strong></p>
-    <p><strong><a href='/JupyterNotebooks/ImageAnalysisVisionInterferometers.pdf'>Fringefinder paper itself</a></strong> (under review by co-authors)
-    <p><strong>Fringefinder paper supplement, <a href='http://dmgenv.nist.gov:8888/notebooks/fringefinder.ipynb'>Jupyter Notebook: Fringefinder</a></strong> and the <strong><a href='/JupyterNotebooks/results.html'>user-generated results</a></strong>, updated every 5 minutes.</p>
-    <p><strong><a href='http://dmgenv.nist.gov:8888/notebooks/fringefinder.ipynb'>Jupyter Notebook: Fringefinder</a></strong> and the <strong><a href='/JupyterNotebooks/results.html'>user-generated results</a></strong>, updated every 5 minutes.</p>
-    <ul style='list-style: none;'>"
-
-  echo $pagefooter > $FOOTERFILE                                                #write current footer to footer file
-
-  IFS=','
-  while read group groupname                                                    #loop through GroupsMonitored.list
-  do
-    #remove leading and trailing spaces
-    group=$(echo $group | awk '$1=$1')
-    groupname=$(echo $groupname | awk '$1=$1')
-
-    pagefooter="<li>$groupname, $group <a href='/Group$group/index.html'>summary</a></li>
-      <ul style='list-style: none;'>"
-    echo $pagefooter >> $FOOTERFILE                                             #append current footer to footer file
-
-    chmod -R 755 $WEBBASEDIR/data/Group$group
-    while read buildinggroup building buildingname                              #loop through BuildingsMonitored.list
-    do
-      #remove leading and trailing spaces
-      buildinggroup=$(echo $buildinggroup | awk '$1=$1')
-      building=$(echo $building | awk '$1=$1')
-      buildingname=$(echo $buildingname | awk '$1=$1')
-
-      if [ "$buildinggroup" = "$group" ]                                        #if current building belongs to current group
-      then
-        pagefooter="<li>$buildingname, Building $building <a href='/Group$group/$building/index.html'>summary</a></li>
-          <ul style='list-style: none;'>
-            <table>"
-        echo $pagefooter >> $FOOTERFILE                                         #append current footer to footer file
-
-        nloops=1 #set number of loops to 1
-        while read labgroup labbuilding lab labname rsacreds hostaddr           #loop through LabsMonitored.list
-        do
-          #remove leading and trailing spaces
-          labgroup=$(echo $labgroup | awk '$1=$1')
-          labbuilding=$(echo $labbuilding | awk '$1=$1')
-          lab=$(echo $lab | awk '$1=$1')
-          labname=$(echo $labname | awk '$1=$1')
-          rsacreds=$(echo $rsacreds | awk '$1=$1')
-          hostaddr=$(echo $hostaddr | awk '$1=$1')
-          if [ "$labbuilding" = "$building" ]                                   #if current lab belongs to current building
-          then
-            if [ "$labgroup" = "Group$group" ]
-            then
-              if [ $((nloops % 2)) -eq '0' ]
-              then                                                                #if even loop number, no background color for lab link text
-                pagefooter="<tr><td>&nbsp;<a href='/Group$group/$building/$lab/index.html'>$lab, $labname</a>&nbsp;</td> <td>&nbsp;<a href='/Group$group/$building/$lab/downloads.html'> Downloads</a>&nbsp;</td></tr>"
-              else                                                                #if odd loop number, gray background color for lab link text
-                pagefooter="<tr style='BACKGROUND-COLOR: LightGray'><td>&nbsp;<a href='/Group$group/$building/$lab/index.html'>$lab, $labname</a>&nbsp;</td> <td>&nbsp;<a href='/Group$group/$building/$lab/downloads.html'> Downloads</a>&nbsp;</td></tr>"
-              fi
-              nloops=$((nloops + 1))
-              echo $pagefooter >> $FOOTERFILE                                     #append current footer to footer file
-            fi
-          fi
-        done < $labslist
-        pagefooter="</table></ul>"
-        echo $pagefooter >> $FOOTERFILE                                         #append current footer to footer file
-      fi
-    done < $buildingslist
-    pagefooter="</ul>"                                                          #append current footer to footer file
-    echo $pagefooter >> $FOOTERFILE                                             #append current footer to footer file
-  done < $groupslist
-  pagefooter="</ul>"                                                            #append current footer to footer file
-  echo $pagefooter >> $FOOTERFILE                                               #append current footer to footer file
-  unset IFS
-
-  pagefooter="<br>
-  <ul style='list-style: none;'>
-    <li>The data displayed does not automatically update in your browser. You must manually refresh the page to see new data.</li>
-    <li>This website rebuilds itself every $TIMETOSLEEP seconds.</li>
-    <li><strong>Page last updated:</strong> $(date)</li>
-    <br>
-    <li>This gift of data is brought to you and maintained by Michael Braine (<i><a href='mailto:michael.braine@nist.gov'>michael.braine@nist.gov</a></i>), Dimensional Metrology Group 685.10, PML. October, 2017</li>
-    <li>The NIST distribution of LEMAS source, including sensor manuals and installation instructions, is available on NIST's internal gitlab server: <a href='https://gitlab.nist.gov/gitlab/braine/lemasdist'>https://gitlab.nist.gov/gitlab/braine/lemasdist</a>.</li>
-    <li>The public distribution of LEMAS source, including sensor manuals and installation instructions, is available on github: <a href='https://github.com/usnistgov/LEMASdistPub'>https://github.com/usnistgov/LEMASdistPub</a>.</li>
-    <li>The source for the website construction and many-environment analysis system is available on github: <a href='https://github.com/usnistgov/LEMASmaster'>https://github.com/usnistgov/LEMASmaster</a>.</li>
-    <li>If you use <i>dmgenv.nist.gov</i>, and subsequently the LEMAS devices, then you agree to the terms:</li>
-    <ol>
-      <li>Do not reproduce the LEMAS system or site in any capacity without receiving consent from 685.10. Downloading and publishing data is okay as long as it is annotated as originating from this system. Give credit where appropriate</li>
-      <li>You allow other users to use or play with the data</li>
-      <li>The data must not be used for calibrations. It is provided purely for monitoring, informational, and decision-making purposes</li>
-      <li>E-mail any suggestions, oddities, and abnormal behavior to the site maintainer
-      <li>This system is known to the State of Maryland (rather, the office of 220/B114 <i>in</i> the state of MD) to cause personal increased awareness of indoor laboratory environmental conditions. Side effects include, but are not limited to: anxiety, depression, feelings of dread or anger, and increased heart rate. If you experience any of these symptoms lasting more than 1 hour, stop using the system and consult your group leader immediately.</li>
-    </li>
-    </ol>
-  </ul>
-  </body>"
-
-  echo $pagefooter >> $FOOTERFILE                                               #append current footer to footer file
 
   #//////////////////////Main page, all laboratory summary\\\\\\\\\\\\\\\\\\\\\\\\
   #update .html for main page

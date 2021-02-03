@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .header {
+    padding-top: 40px;
+  }
+
+  #menu {
+    /* height: 50px; */
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    color: black;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    display: block;
+    z-index: 99;
+  }
+
+  #menu ul,
+  #menu li {
+    margin: 0 0;
+    padding: 0 0;
+    list-style: none;
+  }
+
+  #menu ul {
+    height: 35px;
+  }
+
+  #menu li {
+    float: left;
+    display: inline-block;
+    position: relative;
+    border-right: 2px solid #444;
+    text-transform: none;
+  }
+
+  #menu li:first-child {
+    border-left: none;
+    display: block;
+  }
+
+  #menu a {
+    display: block;
+    line-height: 40px;
+    padding: 0px 5px;
+    text-decoration: none;
+    color: #f2f2f2;
+  }
+
+  #menu li:hover > a,
+  #menu li a:hover {
+    background-color: #f2f2f2;
+    color: black;
+  }
+
+  #menu ul.menus {
+    height: auto;
+    width: 400px;
+    background: #333;
+    position: absolute;
+    z-index: 99;
+    display: none;
+    border: 0;
+  }
+
+  #menu ul.menus li {
+    display: block;
+    width: 100%;
+    font: 12px Arial;
+    text-transform: none;
+  }
+
+  #menu li:hover ul.menus {
+    display: block;
+  }
+
+  #menu a.home {
+    background-color: #1ed600;
+    color: black;
+  }
+
+  #menu a.home:hover {
+    background-color: #f2f2f2;
+    color: black;
+  }
+
+  #menu a.prett {
+    padding: 0 27px 0 14px
+  }
+
+  #menu a.prett::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-width: 6px 5px;
+    border-style: solid;
+    border-color: #f2f2f2 transparent transparent transparent;
+    position: absolute;
+    top: 15px;
+    right: 9px
+  }
+
+  #menu ul.menus a:hover {
+    background-color: #f2f2f2;
+    color: black;
+    overflow: visible;
+  }
+
+  #menu ul.menus .submenu {
+    display: none;
+    position: absolute;
+    left: 400px;
+    top: 0;
+    width: 400px;
+    background-color: #f2f2f2;
+    color: black;
+  }
+
+  #menu ul.menus .submenu li {
+    background-color: #333;
+    max-height: 500px;
+  }
+
+  #menu ul.menus .has-submenu:hover .submenu {
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 500px;
+    background-color: transparent;
+    color: black;
+  }
+
+</style>
+</head>

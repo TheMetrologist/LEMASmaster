@@ -57,7 +57,7 @@ then
   RHrangeline=$((RHrangeline + 1))
   Trange=$(sed -n $Trangeline','$Trangeline'p' $WEBBASEDIR'labsettings/'$building'_'$lab'.labsettings')
   RHrange=$(sed -n $RHrangeline','$RHrangeline'p' $WEBBASEDIR'labsettings/'$building'_'$lab'.labsettings')
-  lastline=$(sed -e '$!d' $WEBBASEDIR'data/'$group'/'$building'/'$lab'/'$building'_'$lab'_'$month$year'-all.env.csv')
+  lastline=$(sed -e '$!d' $WEBBASEDIR'data/Group'$group'/'$building'/'$lab'/'$building'_'$lab'_'$month$year'-all.env.csv')
   Tlast=$(echo $lastline | cut -d ',' -f2)
   RHlast=$(echo $lastline | cut -d ',' -f3)
   Tmin=$(echo $Trange | cut -d ',' -f1 | sed 's/\[//g')

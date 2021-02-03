@@ -17,10 +17,10 @@
 ## References
 #
 ##//////////////////////////////////////////////////////////////////////////////
-## Change log from v1.00 to v1.00
-#   November 2, 2017
+## Change log from v1.00 to v1.01
+#   November 20, 2020
 #
-#   ver 1.00 - initial release
+#   ver 1.01 - added wildcard so LEMASRun process to detect any running LEMASRun process (LEMASRun.py, LEMASRunLoud.py, LEMASRunQuiet.py)
 #
 #///////////////////////////////////////////////////////////////////////////////
 ## Inputs
@@ -31,7 +31,7 @@
 #
 #///////////////////////////////////////////////////////////////////////////////
 
-if [ $(pgrep -af python | grep -c LEMASRun.py) -eq "0" ]
+if [ $(pgrep -af python | grep -c LEMASRun*) -eq "0" ]
 then
   echo "<FONT style='BACKGROUND-COLOR: #FFFF00'>&nbsp;NOT RUNNING&nbsp;</FONT>"
 else
