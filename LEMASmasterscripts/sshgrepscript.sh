@@ -35,17 +35,17 @@ echo "<strong>Alert message recipients</strong><br>"
 nusers=$(cat /home/pi/LEMASdist/Contacts.py | grep -c "labusers\['$labID'\]")
 if [[ $nusers > 1 ]]
 then
-  cat /home/pi/LEMASdist/Contacts.py | grep "labusers\['$labID'\]" | tr -d "[]'" | sed -n -e 's/^.*= //g' -e 's/,/<br>/p'
+  cat /home/pi/LEMASdist/PersistantVar/Contacts.py | grep "labusers\['$labID'\]" | tr -d "[]'" | sed -n -e 's/^.*= //g' -e 's/,/<br>/p'
 else
-  cat /home/pi/LEMASdist/Contacts.py | grep "labusers\['$labID'\]" | tr -d "[]'" | cut -d "=" -f 2
+  cat /home/pi/LEMASdist/PersistantVar/Contacts.py | grep "labusers\['$labID'\]" | tr -d "[]'" | cut -d "=" -f 2
 fi
 echo "<br><br><strong>Current 'NoContact' list</strong><br>"
 echo "<p>email <i><a href='mailto:michael.braine@nist.gov'>michael.braine@nist.gov</a></i> to be added to or removed from the list.</p>"
-cat /home/pi/LEMASdist/NoContact.list
+cat /home/pi/LEMASdist/PersistantVar/NoContact.list
 echo "<br><br><strong>Temperature range setting</strong><br>[min, max]<br>"
-cat /home/pi/LEMASdist/Tcontrols.py | grep "Tcontrols\['$labID'\]" | sed -n -e 's/^.*= //p'
+cat /home/pi/LEMASdist/PersistantVar/Tcontrols.py | grep "Tcontrols\['$labID'\]" | sed -n -e 's/^.*= //p'
 echo "&#176;C<br><br><strong>Humidity range setting</strong><br>[min, max]<br>"
-cat /home/pi/LEMASdist/RHcontrols.py | grep "RHcontrols\['$labID'\]" | sed -n -e 's/^.*= //p'
+cat /home/pi/LEMASdist/PersistantVar/RHcontrols.py | grep "RHcontrols\['$labID'\]" | sed -n -e 's/^.*= //p'
 echo "&#37;RH"
 echo "<br><br><strong>Username, hostname and IP address</strong><br>"
 echo "<pre>"
