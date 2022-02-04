@@ -230,8 +230,8 @@ cat $ABOUTTEMPLATE >> $WEBBASEDIR/data/about.html
 cat $HEADERFILE > $WEBBASEDIR/data/calculators.html
 cat $CALCTEMPLATE >> $WEBBASEDIR/data/calculators.html
 cat $FOOTERTEMPLATE >> $WEBBASEDIR/data/calculators.html
-chmod -R 755 $WEBBASEDIR/data/*
 
+chmod -R 755 $WEBBASEDIR/data/*
 #///////////////////////////////Main Start\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 #loop for all eternity
 while [ true ]

@@ -56,6 +56,8 @@ allfilename=$currentdate'-all.env.csv'                                          
 outagesfilename=$currentdate'-outages.env.csv'                                  #append tocurrent date the filename and extension
 echo "Grabbing data from: $building/$lab"
 timeout 5 scp -i $rsacreds $hostaddr:/home/pi/Desktop/EnvironmentData/$allfilename $WEBBASEDIR''data/Group$group/$building/$lab/$building'_'$lab'_'$allfilename #secure copy latest data from device
+chmod 755 $WEBBASEDIR''data/Group$group/$building/$lab/$building'_'$lab'_'$allfilename
 timeout 5 scp -i $rsacreds $hostaddr:/home/pi/Desktop/EnvironmentData/$outagesfilename $WEBBASEDIR''data/Group$group/$building/$lab/$building'_'$lab'_'$outagesfilename #secure copy latest data from device
+chmod 755 $WEBBASEDIR''data/Group$group/$building/$lab/$building'_'$lab'_'$outagesfilename
 timeout 5 ssh -i $rsacreds $hostaddr sh -s < $LEMASmasterdir/LEMASmasterscripts/sshgrepscript.sh $building'/'$lab > $labsettingspath 2>/dev/null #echo only the lab settings, prevents downloading of contact information
 #scp -i $rsacreds /var/www/dmgenv.nist.gov/NoContact.list $username@$ipaddr:/home/pi/LEMASdist/NoContact.list #secure copy to the device NoContact settings
