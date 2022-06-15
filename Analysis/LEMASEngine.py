@@ -16,8 +16,8 @@ install_location = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.abspath(os.path.join(install_location+"/../")))
 import var.LEMASvar as LEMASvar
 
-WebBaseDir = "/var/www/dmgenv.nist.gov/data/"
-StatsDir = "/var/www/dmgenv.nist.gov/statistics/"
+WebBaseDir = "/var/www/lemas.nist.gov/data/"
+StatsDir = "/var/www/lemas.nist.gov/statistics/"
 
 # file structure "/var/www/dmgenv.nist.gov/EnvData/<group>/<building>/<lab>"
 listgroups = next(os.walk(WebBaseDir))[1]                                       # list all folders in EnvironmentData

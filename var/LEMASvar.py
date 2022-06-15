@@ -1,6 +1,6 @@
 #///////////////////////////////bash Variables\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 #amount of time to wait before rebuilding website, seconds
-TIMETOSLEEP=60
+TIMETOSLEEP=300
 #width of graphs, pixels
 statIMGWIDTH=960
 #height of graphs, pixels

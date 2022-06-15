@@ -60,4 +60,4 @@ chmod 755 $WEBBASEDIR''data/Group$group/$building/$lab/$building'_'$lab'_'$allfi
 timeout 5 scp -i $rsacreds $hostaddr:/home/pi/Desktop/EnvironmentData/$outagesfilename $WEBBASEDIR''data/Group$group/$building/$lab/$building'_'$lab'_'$outagesfilename #secure copy latest data from device
 chmod 755 $WEBBASEDIR''data/Group$group/$building/$lab/$building'_'$lab'_'$outagesfilename
 timeout 5 ssh -i $rsacreds $hostaddr sh -s < $LEMASmasterdir/LEMASmasterscripts/sshgrepscript.sh $building'/'$lab > $labsettingspath 2>/dev/null #echo only the lab settings, prevents downloading of contact information
-#scp -i $rsacreds /var/www/dmgenv.nist.gov/NoContact.list $username@$ipaddr:/home/pi/LEMASdist/NoContact.list #secure copy to the device NoContact settings
+#scp -i $rsacreds /var/www/lemas.nist.gov/NoContact.list $username@$ipaddr:/home/pi/LEMASdist/NoContact.list #secure copy to the device NoContact settings

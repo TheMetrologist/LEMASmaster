@@ -139,7 +139,7 @@ cat >> $savefilepath <<- _EOF_
       <p>email <i><a href="mailto:michael.braine@nist.gov">michael.braine@nist.gov</a></i> to be added to or removed from the list.</p>
       <ul style='list-style: none;'>
 _EOF_
-cat /var/www/dmgenv.nist.gov/NoContact.list | while read -r line; do
+cat /var/www/lemas.nist.gov/NoContact.list | while read -r line; do
   echo '<li>'$line'</li>' >> $savefilepath
 done
 
@@ -164,7 +164,7 @@ do
   hostaddr=$(echo $hostaddr | awk '$1=$1')
 
   echo '<li>'$labbuilding/$lab, $labname'</li>' >> $savefilepath
-done < /var/www/dmgenv.nist.gov/QuietLabs.list
+done < /var/www/lemas.nist.gov/QuietLabs.list
 unset IFS
 
 cat >> $savefilepath <<- _EOF_

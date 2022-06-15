@@ -24,8 +24,7 @@
 #///////////////////////////////////////////////////////////////////////////////
 
 LEMASmasterdir="/home/$USER/BraineCode/LEMAS/LEMASmaster"
-# LEMASmasterdir="/media/$USER/A/BraineCode/LEMAS/LEMASmaster/"
-WEBBASEDIR="/var/www/dmgenv.nist.gov/"
+WEBBASEDIR="/var/www/lemas.nist.gov/"
 
 #specifiy files and directories
 TIMETOSLEEP=$(cat $LEMASmasterdir/var/LEMASvar.py | grep TIMETOSLEEP*=)
@@ -41,7 +40,7 @@ ABOUTTEMPLATE=$LEMASmasterdir/templates/about.html
 CALCTEMPLATE=$LEMASmasterdir/templates/Calculators.html
 starttime=$(date)
 
-#/////////////////////Create dmgenv.nist.gov directories\\\\\\\\\\\\\\\\\\\\\\\\\\\
+#/////////////////////Create lemas.nist.gov directories\\\\\\\\\\\\\\\\\\\\\\\\\\\
 #base directories
 mkdir $WEBBASEDIR 2>/dev/null
 mkdir $WEBBASEDIR/data
@@ -202,14 +201,13 @@ unset IFS
 
 echo "  </ul>
   </li>
-  <li><a href='http://dmgenv.nist.gov/ArchivedData/'>Archived data</a></li>
-  <li><a href='http://129.6.97.77:8888/notebooks/LEMASCalculators/LEMASCalculators.ipynb'>Calculators</a></li>
+  <li><a href='http://lemas.campus.nist.gov/ArchivedData/'>Archived data</a></li>
   <li style='float: right;'><a href=/about.html>About the system</a></li>
   <li style='float: right;'><a class='prett'>Other</a>
     <ul class='menus'>
-      <li><a href='http://dmgenv.nist.gov/JupyterNotebooks/ImageAnalysisVisionInterferometers.pdf'>Fringefinder paper</a></li>
-      <li><a href='http://dmgenv.nist.gov:8888/notebooks/fringefinder.ipynb'>Fringefinder paper supplement</a></li>
-      <li><a href='http://dmgenv.nist.gov/JupyterNotebooks/results.html'>Fringefinder supplement results</a></li>
+      <li><a href='http://lemas.campus.nist.gov/JupyterNotebooks/ImageAnalysisVisionInterferometers.pdf'>Fringefinder paper</a></li>
+      <li><a href='http://lemas.campus.nist.gov:8888/notebooks/fringefinder.ipynb'>Fringefinder paper supplement</a></li>
+      <li><a href='http://lemas.campus.nist.gov/JupyterNotebooks/results.html'>Fringefinder supplement results</a></li>
     </ul>
   </li>
   </ul>
